@@ -95,17 +95,17 @@ function App() {
       const detractNumOfGuesses = numOfGuesses - 1;
 
       // Conditional to check if the user lost the game
-      if (numOfGuesses - 1 === 0) {
+      if (detractNumOfGuesses === 0) {
         // Update number of guesses
         setNumOfGuesses(detractNumOfGuesses);
 
         console.log("Ya Lose! Start New Game?");
-        
+
         // Start new game
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       } else {
         // Create a copy of the keyboard letter object
-        const copiedKeyboard = {...keyboardLetters};
+        const copiedKeyboard = { ...keyboardLetters };
 
         // Update copied keyboard to have incorrect letter
         copiedKeyboard[letter].incorrectLetter = true;
@@ -122,23 +122,29 @@ function App() {
   const keyboardLetterRender = () => {
     const keyboardLettersKeys = Object.keys(keyboardLetters);
 
-    return keyboardLettersKeys.map((el, index) => (
-      <button
-        key={index}
-        style={{
-          margin: "5px",
-          padding: "5px",
-          border: "1px solid black",
-          borderRadius: "100%",
-          height: "30px",
-          width: "30px",
-          textAlign: "center"
-        }}
-        onClick={letterInputClick}
-      >
-        <p>{el.toUpperCase()}</p>
-      </button>
-    ));
+    return keyboardLettersKeys.map((letter, index) => {
+      // Grab the incorrectLetter value from keyboard letters object
+      const { incorrectLetter } = keyboardLetters[letter];
+
+      return (
+        <button
+          key={index}
+          disabled={incorrectLetter}
+          onClick={letterInputClick}
+          style={{
+            margin: "5px",
+            padding: "5px",
+            border: "1px solid black",
+            borderRadius: "100%",
+            height: "30px",
+            width: "30px",
+            textAlign: "center"
+          }}
+        >
+          <p>{letter.toLowerCase()}</p>
+        </button>
+      );
+    });
   };
 
   return (
