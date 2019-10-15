@@ -3,6 +3,7 @@ import "./App.css";
 
 // Utils
 import { getWordList } from "./utils/wordDictAPI";
+import { getRandomSecretWord } from "./utils/secretWordUtils";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -42,22 +43,14 @@ function App() {
 
   // On Component Did Mount
   useEffect(() => {
+    // Set secretWord and guessWord
+    const getRandomWord = async () => {
+      const randomWord = await getRandomSecretWord();
+      setSecretWord(randomWord);
+    };
 
-    // Get Word List 
-    getWordList().then(data => {
-      // Split word string into array of words
-      const wordListArray = data.split("\n");
-
-      // Randomly choose number
-      const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));
-
-      // Randomly choose word
-      const randomWord = wordListArray[getRandomNum(wordListArray.length - 1)];
-      
-      // Set secretWord and guessWord
-
-    });
-  });
+    getRandomWord();
+  }, []);
 
   const keyboardLetterRender = () => {
     const keyboardLettersKeys = Object.keys(keyboardLetters);
