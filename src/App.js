@@ -7,7 +7,7 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 function App() {
   const [secretWord, setSecretWord] = useState("");
   const [guessWord, setGuessWord] = useState("_ _ _ _ _");
-  const [numOfGuesses] = useState(6);
+  const [numOfGuesses, setNumOfGuesses] = useState(6);
   const [keyboardLetters] = useState({
     a: { incorrectLetter: false },
     b: { incorrectLetter: false },
@@ -56,32 +56,45 @@ function App() {
   }, []);
 
   const letterInputClick = e => {
+    // Grab the inner text from the button clicked
     const letter = e.target.innerText.toLowerCase();
-    
+
+    // Conditional to check if secret word has the user's guessed letter
     if (secretWord.toLowerCase().includes(letter)) {
+      // Replace the guess word with all the occurances of the guessed letter
       const newGuessWord = guessWord
         .split(" ")
         .map((guessWordLetter, index) => {
           const secretWordLetter = secretWord[index].toLowerCase();
 
-          if(secretWordLetter === letter) return (secretWord.length - 1 === index ? secretWordLetter : secretWordLetter + " ");
-          else return (secretWord.length - 1 === index ? guessWordLetter : guessWordLetter + " ");
+          if (secretWordLetter === letter)
+            return secretWord.length - 1 === index
+              ? secretWordLetter
+              : secretWordLetter + " ";
+          else
+            return secretWord.length - 1 === index
+              ? guessWordLetter
+              : guessWordLetter + " ";
         })
         .join("");
 
-        // Update the guess word
-        setGuessWord(newGuessWord);
+      // Update the guess word
+      setGuessWord(newGuessWord);
 
-        const newGuessWordWithoutSpace = newGuessWord.split(" ").join("");
-        // Conditional to check if user won game
-      if(newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()){
-        console.log("Ya Win! Start New Game?")
+      // Created guess word without the spaces
+      const newGuessWordWithoutSpace = newGuessWord.split(" ").join("");
+
+      // Conditional to check if user won the game
+      if (newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
+        console.log("Ya Win! Start New Game?");
         // Start new game
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       }
-
     } else {
-      // Conditional to check if user lost game
+      // Detract one guess from the number of guesses
+      const detractNumOfGuesses = numOfGuesses - 1;
+
+      // Conditional to check if the user lost the game
       if (numOfGuesses - 1 === 0) {
         console.log("Ya Lose! Start New Game?");
 
@@ -90,7 +103,10 @@ function App() {
       } else {
         // Update keyboard to have incorrect letter
         // keyboardLetters[letter].incorrectLetter = true;
-        // Set state to numOfGuesses and keyboardLetters
+        // Set state keyboardLetters
+
+        // Update number of guesses
+        setNumOfGuesses(detractNumOfGuesses);
       }
     }
   };
