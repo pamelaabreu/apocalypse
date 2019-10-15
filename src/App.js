@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // Utils
-import { getRandomSecretWord } from "./utils/secretWordUtils";
+import { getRandomSecretWord } from "./utils/wordUtils";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
