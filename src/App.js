@@ -8,7 +8,7 @@ function App() {
   const [secretWord, setSecretWord] = useState("");
   const [guessWord, setGuessWord] = useState("_ _ _ _ _");
   const [numOfGuesses, setNumOfGuesses] = useState(6);
-  const [keyboardLetters] = useState({
+  const [keyboardLetters, setKeyboardLetters] = useState({
     a: { incorrectLetter: false },
     b: { incorrectLetter: false },
     c: { incorrectLetter: false },
@@ -104,9 +104,14 @@ function App() {
         // Start new game
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       } else {
-        // Update keyboard to have incorrect letter
-        // keyboardLetters[letter].incorrectLetter = true;
-        // Set state keyboardLetters
+        // Create a copy of the keyboard letter object
+        const copiedKeyboard = {...keyboardLetters};
+
+        // Update copied keyboard to have incorrect letter
+        copiedKeyboard[letter].incorrectLetter = true;
+
+        // Update keyboard letters
+        setKeyboardLetters(copiedKeyboard);
 
         // Update number of guesses
         setNumOfGuesses(detractNumOfGuesses);
