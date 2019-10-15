@@ -42,7 +42,21 @@ function App() {
 
   // On Component Did Mount
   useEffect(() => {
-    console.log("App Component did mount");
+
+    // Get Word List 
+    getWordList().then(data => {
+      // Split word string into array of words
+      const wordListArray = data.split("\n");
+
+      // Randomly choose number
+      const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));
+
+      // Randomly choose word
+      const randomWord = wordListArray[getRandomNum(wordListArray.length - 1)];
+      
+      // Set secretWord and guessWord
+
+    });
   });
 
   const keyboardLetterRender = () => {
