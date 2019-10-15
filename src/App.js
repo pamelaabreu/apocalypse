@@ -96,8 +96,11 @@ function App() {
 
       // Conditional to check if the user lost the game
       if (numOfGuesses - 1 === 0) {
-        console.log("Ya Lose! Start New Game?");
+        // Update number of guesses
+        setNumOfGuesses(detractNumOfGuesses);
 
+        console.log("Ya Lose! Start New Game?");
+        
         // Start new game
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       } else {
