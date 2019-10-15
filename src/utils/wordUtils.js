@@ -20,4 +20,11 @@ const getRandomSecretWord = async () => {
   return await wordList[getRandomNum(wordList.length - 1)];
 };
 
-export { createWordList, getRandomSecretWord, getRandomNum };
+// Create inital guessWord
+const createGuessWord = secretWord =>
+  secretWord
+    .split("")
+    .map((element, index) => (secretWord.length - 1 === index ? "_" : "_ "))
+    .join("");
+
+export { createWordList, getRandomSecretWord, getRandomNum, createGuessWord };
