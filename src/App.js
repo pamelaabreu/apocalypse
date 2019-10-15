@@ -55,11 +55,51 @@ function App() {
     getRandomWordAndGuessWord();
   }, []);
 
+  const letterInputClick = e => {
+    const letter = e.target.innerText.toLowerCase();
+    
+    if (secretWord.toLowerCase().includes(letter)) {
+      const newGuessWord = guessWord
+        .split(" ")
+        .map((guessWordLetter, index) => {
+          const secretWordLetter = secretWord[index].toLowerCase();
+
+          if(secretWordLetter === letter) return (secretWord.length - 1 === index ? secretWordLetter : secretWordLetter + " ");
+          else return (secretWord.length - 1 === index ? guessWordLetter : guessWordLetter + " ");
+        })
+        .join("");
+
+        // Update the guess word
+        setGuessWord(newGuessWord);
+
+        const newGuessWordWithoutSpace = newGuessWord.split(" ").join("");
+        // Conditional to check if user won game
+      if(newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()){
+        console.log("Ya Win! Start New Game?")
+        // Start new game
+        // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
+      }
+
+    } else {
+      // Conditional to check if user lost game
+      if (numOfGuesses - 1 === 0) {
+        console.log("Ya Lose! Start New Game?");
+
+        // Start new game
+        // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
+      } else {
+        // Update keyboard to have incorrect letter
+        // keyboardLetters[letter].incorrectLetter = true;
+        // Set state to numOfGuesses and keyboardLetters
+      }
+    }
+  };
+
   const keyboardLetterRender = () => {
     const keyboardLettersKeys = Object.keys(keyboardLetters);
 
     return keyboardLettersKeys.map((el, index) => (
-      <div
+      <button
         key={index}
         style={{
           margin: "5px",
@@ -67,12 +107,13 @@ function App() {
           border: "1px solid black",
           borderRadius: "100%",
           height: "30px",
-          width:"30px",
-          textAlign:"center"
+          width: "30px",
+          textAlign: "center"
         }}
+        onClick={letterInputClick}
       >
         <p>{el.toUpperCase()}</p>
-      </div>
+      </button>
     ));
   };
 
@@ -97,7 +138,7 @@ function App() {
       <div
         style={{ border: "1px solid rebeccapurple", margin: "100px 25% 0 25%" }}
       >
-        <div style={{textAlign:"center"}}>
+        <div style={{ textAlign: "center" }}>
           <p style={{ padding: "30px" }}>{guessWord}</p>
           <div
             style={{
@@ -107,7 +148,13 @@ function App() {
             }}
           >
             <p>keyboard</p>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"center" }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center"
+              }}
+            >
               {keyboardLetterRender()}
             </div>
           </div>
