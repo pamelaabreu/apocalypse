@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
+// Utils
+import { getWordList } from "./utils/wordDictAPI";
+
 function App() {
   // const [secretWord] = useState();
   const [guessWord] = useState("_ _ _ _ _");
