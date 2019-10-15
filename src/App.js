@@ -5,10 +5,45 @@ function App() {
   // const [secretWord] = useState();
   const [guessWord] = useState("_ _ _ _ _");
   const [numOfGuesses] = useState(6);
-  const [keyboardLetters] = useState();
+  const [keyboardLetters] = useState({
+    a: { incorrectLetter: false },
+    b: { incorrectLetter: false },
+    c: { incorrectLetter: false },
+    d: { incorrectLetter: false },
+    e: { incorrectLetter: false },
+    f: { incorrectLetter: false },
+    g: { incorrectLetter: false },
+    h: { incorrectLetter: false },
+    i: { incorrectLetter: false },
+    j: { incorrectLetter: false },
+    k: { incorrectLetter: false },
+    l: { incorrectLetter: false },
+    m: { incorrectLetter: false },
+    n: { incorrectLetter: false },
+    o: { incorrectLetter: false },
+    p: { incorrectLetter: false },
+    q: { incorrectLetter: false },
+    r: { incorrectLetter: false },
+    s: { incorrectLetter: false },
+    t: { incorrectLetter: false },
+    u: { incorrectLetter: false },
+    v: { incorrectLetter: false },
+    w: { incorrectLetter: false },
+    x: { incorrectLetter: false },
+    y: { incorrectLetter: false },
+    z: { incorrectLetter: false }
+  });
   // Extra feature ~ track cpu and user scores
   // const [cpuScore] = useState();
   // const [userScore] = useState();
+
+  const keyboardLetterRender = () => {
+    const keyboardLettersKeys = Object.keys(keyboardLetters);
+
+    return keyboardLettersKeys.map((el, index) => (
+      <p key={index}>{el.toUpperCase()}</p>
+    ));
+  };
 
   return (
     <div
@@ -40,7 +75,8 @@ function App() {
               padding: "20px"
             }}
           >
-            <p>keyboard {keyboardLetters}</p>
+            <p>keyboard</p>
+            <div style={{ display: "flex" }}>{keyboardLetterRender()}</div>
           </div>
         </div>
       </div>
