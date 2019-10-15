@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  // const [secretWord] = useState();
+  const [guessWord] = useState();
+  const [numOfGuesses] = useState();
+  const [keyboardLetters] = useState();
+  // Extra feature ~ track cpu and user scores
+  // const [cpuScore] = useState();
+  // const [userScore] = useState();
+
   return (
     <div
       style={{
