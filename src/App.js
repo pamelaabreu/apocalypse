@@ -4,6 +4,9 @@ import "./App.css";
 // Utils
 import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 
+// Components
+import Keyboard from "./components/Keyboard";
+
 function App() {
   const [secretWord, setSecretWord] = useState("");
   const [guessWord, setGuessWord] = useState("_ _ _ _ _");
@@ -185,6 +188,7 @@ function App() {
                 justifyContent: "center"
               }}
             >
+              <Keyboard />
               {keyboardLetterRender()}
             </div>
           </div>
