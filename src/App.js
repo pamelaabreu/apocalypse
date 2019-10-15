@@ -5,7 +5,7 @@ import "./App.css";
 import { getWordList } from "./utils/wordDictAPI";
 
 function App() {
-  // const [secretWord] = useState();
+  const [secretWord, setSecretWord] = useState("");
   const [guessWord] = useState("_ _ _ _ _");
   const [numOfGuesses] = useState(6);
   const [keyboardLetters] = useState({
