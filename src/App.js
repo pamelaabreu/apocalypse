@@ -160,7 +160,11 @@ function App() {
                 justifyContent: "center"
               }}
             >
-              <Keyboard keyboardLetters={keyboardLetters} letterInputClick={letterInputClick} keyboardLettersKeys={Object.keys(keyboardLetters)}/>
+              <Keyboard
+                keyboardLetters={keyboardLetters}
+                letterInputClick={letterInputClick}
+                keyboardLettersKeys={Object.keys(keyboardLetters)}
+              />
             </div>
           </div>
         </div>
