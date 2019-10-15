@@ -37,6 +37,11 @@ function App() {
   // const [cpuScore] = useState();
   // const [userScore] = useState();
 
+  // On Component Did Mount
+  useEffect(() => {
+    console.log("App Component did mount");
+  });
+
   const keyboardLetterRender = () => {
     const keyboardLettersKeys = Object.keys(keyboardLetters);
 
