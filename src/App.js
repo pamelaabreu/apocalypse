@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // Utils
-import { getWordList } from "./utils/wordDictAPI";
 import { getRandomSecretWord } from "./utils/secretWordUtils";
 
 function App() {
