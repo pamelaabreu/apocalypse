@@ -45,7 +45,7 @@ function App() {
     // Set secretWord and guessWord
     const getRandomWordAndGuessWord = async () => {
       const randomWord = await getRandomSecretWord();
-      
+
       const newGuessWord = await createGuessWord(randomWord);
 
       setSecretWord(randomWord);
@@ -59,7 +59,20 @@ function App() {
     const keyboardLettersKeys = Object.keys(keyboardLetters);
 
     return keyboardLettersKeys.map((el, index) => (
-      <p key={index}>{el.toUpperCase()}</p>
+      <div
+        key={index}
+        style={{
+          margin: "5px",
+          padding: "5px",
+          border: "1px solid black",
+          borderRadius: "100%",
+          height: "30px",
+          width:"30px",
+          textAlign:"center"
+        }}
+      >
+        <p>{el.toUpperCase()}</p>
+      </div>
     ));
   };
 
@@ -82,19 +95,21 @@ function App() {
         <p>game image rendering goes here</p>
       </div>
       <div
-        style={{ border: "1px solid rebeccapurple", margin: "25% 25% 25% 25%" }}
+        style={{ border: "1px solid rebeccapurple", margin: "100px 25% 0 25%" }}
       >
-        <div>
-          <p style={{ padding: "20px" }}>{guessWord}</p>
+        <div style={{textAlign:"center"}}>
+          <p style={{ padding: "30px" }}>{guessWord}</p>
           <div
             style={{
               border: "1px solid blue",
-              margin: "20px",
-              padding: "20px"
+              margin: "0 10% 40px 10%",
+              padding: "10px"
             }}
           >
             <p>keyboard</p>
-            <div style={{ display: "flex" }}>{keyboardLetterRender()}</div>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent:"center" }}>
+              {keyboardLetterRender()}
+            </div>
           </div>
         </div>
       </div>
