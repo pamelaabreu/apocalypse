@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
+// Utils
+import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
+
 function App() {
-  // const [secretWord] = useState();
-  const [guessWord] = useState("_ _ _ _ _");
+  const [secretWord, setSecretWord] = useState("");
+  const [guessWord, setGuessWord] = useState("_ _ _ _ _");
   const [numOfGuesses] = useState(6);
   const [keyboardLetters] = useState({
     a: { incorrectLetter: false },
@@ -36,6 +39,21 @@ function App() {
   // Extra feature ~ track cpu and user scores
   // const [cpuScore] = useState();
   // const [userScore] = useState();
+
+  // On Component Did Mount
+  useEffect(() => {
+    // Set secretWord and guessWord
+    const getRandomWordAndGuessWord = async () => {
+      const randomWord = await getRandomSecretWord();
+      
+      const newGuessWord = await createGuessWord(randomWord);
+
+      setSecretWord(randomWord);
+      setGuessWord(newGuessWord);
+    };
+
+    getRandomWordAndGuessWord();
+  }, []);
 
   const keyboardLetterRender = () => {
     const keyboardLettersKeys = Object.keys(keyboardLetters);
