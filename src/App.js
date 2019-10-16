@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+// Assets
+import keyboardTemplate from "./assets/keyboardTemplate";
+
 // Utils
 import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 
