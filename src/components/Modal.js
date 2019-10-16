@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const BootstrapModal = ({ show, userWon, onHide, secretWord }) => {
+const StartNewGameModal = ({ show, userWon, onHide, secretWord }) => {
     const winLoseMessage = userWon ? "Ya Win!" : `Ya Lose! The correct word was ${secretWord}.`
   return (
     <Modal
@@ -20,4 +20,4 @@ const BootstrapModal = ({ show, userWon, onHide, secretWord }) => {
   );
 };
 
-export default BootstrapModal;
+export default StartNewGameModal;

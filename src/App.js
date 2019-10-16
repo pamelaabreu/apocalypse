@@ -8,7 +8,7 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 
 // Components
 import Keyboard from "./components/Keyboard";
-import Modal from "./components/Modal";
+import StartNewGameModal from "./components/Modal";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -146,7 +146,7 @@ function App() {
         marginRight: "25%"
       }}
     >
-      <Modal show={modalShow} secretWord={secretWord} userWon={userWon} onHide={resetGame} />
+      <StartNewGameModal show={modalShow} secretWord={secretWord} userWon={userWon} onHide={resetGame} />
 
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
