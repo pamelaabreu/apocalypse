@@ -7,12 +7,12 @@ const Keyboard = ({
 }) => {
   return keyboardLettersKeys.map((letter, index) => {
     // Grab the incorrectLetter value from keyboard letters object
-    const { incorrectLetter } = keyboardLetters[letter];
+    const { guessed } = keyboardLetters[letter];
 
     return (
       <button
         key={index}
-        disabled={incorrectLetter}
+        disabled={guessed}
         onClick={letterInputClick}
         style={{
           margin: "5px",
