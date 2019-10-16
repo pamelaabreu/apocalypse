@@ -66,6 +66,28 @@ function App() {
     }
   };
 
+  const userLostGame = (numGuesses, letter) => {
+    // Conditional to check if the user lost the game
+      if (numGuesses === 0) {
+        // Start new game - show modal
+        setModalShow(true);
+        setUserWon(false);
+        setNumOfGuesses(numGuesses);
+      } else {
+        // Create a copy of the keyboard letter object
+        const copiedKeyboard = { ...keyboardLetters };
+
+        // Update copied keyboard to have incorrect letter
+        copiedKeyboard[letter].incorrectLetter = true;
+
+        // Update keyboard letters
+        setKeyboardLetters(copiedKeyboard);
+
+        // Update number of guesses
+        setNumOfGuesses(numGuesses);
+      }
+  };
+
   const letterInputClick = e => {
     // Grab the inner text from the button clicked
     const letter = e.target.innerText.toLowerCase();
@@ -92,25 +114,8 @@ function App() {
       // Detract one guess from the number of guesses
       const detractNumOfGuesses = numOfGuesses - 1;
 
-      // Conditional to check if the user lost the game
-      if (detractNumOfGuesses === 0) {
-        // Start new game - show modal
-        setModalShow(true);
-        setUserWon(false);
-        // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
-      } else {
-        // Create a copy of the keyboard letter object
-        const copiedKeyboard = { ...keyboardLetters };
-
-        // Update copied keyboard to have incorrect letter
-        copiedKeyboard[letter].incorrectLetter = true;
-
-        // Update keyboard letters
-        setKeyboardLetters(copiedKeyboard);
-
-        // Update number of guesses
-        setNumOfGuesses(detractNumOfGuesses);
-      }
+      // Check if user lost game
+      userLostGame(detractNumOfGuesses, letter);
     }
   };
 
@@ -126,7 +131,7 @@ function App() {
   const resetGame = () => {
     // Hide Modal
     setModalShow(false);
-
+    console.log(keyboardTemplate)
     // Reset state values for new game
     setUserWon(false);
     setNumOfGuesses(6);
