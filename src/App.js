@@ -23,7 +23,7 @@ function App() {
 
   // On Component Did Mount
   useEffect(() => {
-    // Create a deep copy of keyboard object 
+    // Create a deep copy of keyboard object
     const copiedKeyboardTemplate = JSON.parse(JSON.stringify(keyboardTemplate));
 
     // Set secretWord and guessWord
@@ -88,7 +88,7 @@ function App() {
       userLostGame(detractNumOfGuesses, letter);
     }
   };
-  
+
   const replaceLetterOccurances = (secretWord, guessWord, letter) => {
     // Split string
     const guessWordArray = guessWord.split(" ");
@@ -140,12 +140,12 @@ function App() {
   };
 
   const resetGame = () => {
-    // Create a deep copy of keyboard object 
+    // Create a deep copy of keyboard object
     const copiedKeyboardTemplate = JSON.parse(JSON.stringify(keyboardTemplate));
 
     // Hide Modal
     setModalShow(false);
-  
+
     // Reset state values for new game
     setUserWon(false);
     setNumOfGuesses(6);
