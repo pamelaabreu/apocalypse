@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 
 // Utils
 import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
