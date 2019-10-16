@@ -146,7 +146,12 @@ function App() {
         marginRight: "25%"
       }}
     >
-      <StartNewGameModal show={modalShow} secretWord={secretWord} userWon={userWon} onHide={resetGame} />
+      <StartNewGameModal
+        show={modalShow}
+        secretWord={secretWord}
+        userWon={userWon}
+        onHide={resetGame}
+      />
 
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
