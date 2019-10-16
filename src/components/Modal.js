@@ -2,7 +2,8 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const BootstrapModal = ({ show, onHide }) => {
+const BootstrapModal = ({ show, userWon, onHide }) => {
+    const winLoseMessage = userWon ? "Ya Win! Start New Game?" : "Ya Lose! Start New Game?"
   return (
     <Modal
       centered
@@ -12,7 +13,7 @@ const BootstrapModal = ({ show, onHide }) => {
       show={show}
     >
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        <h4>{winLoseMessage}</h4>
         <Button onClick={onHide}>Start New Game</Button>
       </Modal.Body>
     </Modal>
