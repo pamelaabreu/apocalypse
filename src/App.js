@@ -132,7 +132,7 @@ function App() {
     // Reset state values for new game
     setUserWon(false);
     setNumOfGuesses(6);
-    // keyboard
+    setKeyboardLetters(keyboardTemplate);
     getSecretWordAndGuessWord();
   };
 
