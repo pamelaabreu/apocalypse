@@ -57,6 +57,15 @@ function App() {
     return newGuessWord;
   };
 
+  const userWonGame = guessWordWithoutSpace => {
+    // Conditional to check if user won the game
+    if (guessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
+      // Start new game ~ show modal
+      setModalShow(true);
+      setUserWon(true);
+    }
+  };
+
   const letterInputClick = e => {
     // Grab the inner text from the button clicked
     const letter = e.target.innerText.toLowerCase();
@@ -73,16 +82,12 @@ function App() {
       // Update the guess word
       setGuessWord(newGuessWord);
 
-      // Created guess word without the spaces
+      // Create guess word without the spaces
       const newGuessWordWithoutSpace = newGuessWord.split(" ").join("");
 
-      // Conditional to check if user won the game
-      if (newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
-        // Start new game ~ show modal
-        setModalShow(true);
-        setUserWon(true);
-        // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
-      }
+      // Check if user won the game
+      userWonGame(newGuessWordWithoutSpace);
+      
     } else {
       // Detract one guess from the number of guesses
       const detractNumOfGuesses = numOfGuesses - 1;
