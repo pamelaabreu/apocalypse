@@ -2,8 +2,8 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-const BootstrapModal = ({ show, userWon, onHide }) => {
-    const winLoseMessage = userWon ? "Ya Win! Start New Game?" : "Ya Lose! Start New Game?"
+const BootstrapModal = ({ show, userWon, onHide, secretWord }) => {
+    const winLoseMessage = userWon ? "Ya Win!" : `Ya Lose! The correct word was ${secretWord}.`
   return (
     <Modal
       centered
@@ -14,7 +14,7 @@ const BootstrapModal = ({ show, userWon, onHide }) => {
     >
       <Modal.Body>
         <h4>{winLoseMessage}</h4>
-        <Button onClick={onHide}>Start New Game</Button>
+        <Button onClick={onHide}>Start New Game?</Button>
       </Modal.Body>
     </Modal>
   );
