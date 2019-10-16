@@ -91,7 +91,6 @@ function App() {
 
       // Conditional to check if user won the game
       if (newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
-        console.log("Ya Win! Start New Game?");
         // Start new game ~ show modal
         setModalShow(true);
         setUserWon(true);
@@ -103,11 +102,6 @@ function App() {
 
       // Conditional to check if the user lost the game
       if (detractNumOfGuesses === 0) {
-        // Update number of guesses
-        setNumOfGuesses(detractNumOfGuesses);
-
-        console.log("Ya Lose! Start New Game?");
-
         // Start new game - show modal
         setModalShow(true);
         setUserWon(false);
@@ -128,6 +122,18 @@ function App() {
     }
   };
 
+  const resetGame = () => {
+    // Hide Modal
+    setModalShow(false);
+
+    // Reset values
+    setUserWon(false);
+    setNumOfGuesses(6);
+    // keyboard
+    // secretWord
+    // guess word
+  };
+
   return (
     <div
       style={{
@@ -138,7 +144,7 @@ function App() {
         marginRight: "25%"
       }}
     >
-      <Modal show={modalShow} userWon={userWon} onHide={() => setModalShow(false)} />
+      <Modal show={modalShow} userWon={userWon} onHide={resetGame} />
 
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
