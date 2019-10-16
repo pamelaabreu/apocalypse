@@ -66,31 +66,35 @@ function App() {
     }
   };
 
-  const userLostGame = (numGuesses, letter) => {
+  const userLostGame = numGuesses => {
     // Conditional to check if the user lost the game
-      if (numGuesses === 0) {
-        // Start new game - show modal
-        setModalShow(true);
-        setUserWon(false);
-        setNumOfGuesses(numGuesses);
-      } else {
-        // Create a copy of the keyboard letter object
-        const copiedKeyboard = { ...keyboardLetters };
+    if (numGuesses === 0) {
+      // Start new game - show modal
+      setModalShow(true);
+      setUserWon(false);
+      setNumOfGuesses(numGuesses);
+    } else {
+      // Update number of guesses
+      setNumOfGuesses(numGuesses);
+    }
+  };
 
-        // Update copied keyboard to have incorrect letter
-        copiedKeyboard[letter].incorrectLetter = true;
+  const updateKeyboardWithGuessedLetter = letter => {
+    // Create a copy of the keyboard letter object
+    const copiedKeyboard = { ...keyboardLetters };
 
-        // Update keyboard letters
-        setKeyboardLetters(copiedKeyboard);
+    copiedKeyboard[letter].guessed = true;
 
-        // Update number of guesses
-        setNumOfGuesses(numGuesses);
-      }
+    // Update keyboard letters
+    setKeyboardLetters(copiedKeyboard);
   };
 
   const letterInputClick = e => {
     // Grab the inner text from the button clicked
     const letter = e.target.innerText.toLowerCase();
+
+    // Update keyboard to have guessed letter
+    updateKeyboardWithGuessedLetter(letter);
 
     // Conditional to check if secret word has the user's guessed letter
     if (secretWord.toLowerCase().includes(letter)) {
@@ -109,7 +113,6 @@ function App() {
 
       // Check if user won the game
       userWonGame(newGuessWordWithoutSpace);
-      
     } else {
       // Detract one guess from the number of guesses
       const detractNumOfGuesses = numOfGuesses - 1;
@@ -131,7 +134,7 @@ function App() {
   const resetGame = () => {
     // Hide Modal
     setModalShow(false);
-    console.log(keyboardTemplate)
+    console.log(keyboardTemplate);
     // Reset state values for new game
     setUserWon(false);
     setNumOfGuesses(6);
