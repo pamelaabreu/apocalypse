@@ -29,6 +29,34 @@ function App() {
     setKeyboardLetters(keyboardTemplate);
   }, []);
 
+  const replaceLetterOccurances = (secretWord, guessWord, letter) => {
+    // Split string
+    const guessWordArray = guessWord.split(" ");
+
+    // New guess word array with occurances of letter
+    const convertedGuessWordArray = guessWordArray.map(
+      (guessWordLetter, index) => {
+        // Get each letter from the secret word
+        const secretWordLetter = secretWord[index].toLowerCase();
+
+        // Conditional to replace underscore with matching letter
+        if (secretWordLetter === letter)
+          return secretWord.length - 1 === index
+            ? secretWordLetter
+            : secretWordLetter + " ";
+        else
+          return secretWord.length - 1 === index
+            ? guessWordLetter
+            : guessWordLetter + " ";
+      }
+    );
+
+    // Guess word string with occurances
+    const newGuessWord = convertedGuessWordArray.join("");
+
+    return newGuessWord;
+  };
+
   const letterInputClick = e => {
     // Grab the inner text from the button clicked
     const letter = e.target.innerText.toLowerCase();
@@ -36,21 +64,11 @@ function App() {
     // Conditional to check if secret word has the user's guessed letter
     if (secretWord.toLowerCase().includes(letter)) {
       // Replace the guess word with all the occurances of the guessed letter
-      const newGuessWord = guessWord
-        .split(" ")
-        .map((guessWordLetter, index) => {
-          const secretWordLetter = secretWord[index].toLowerCase();
-
-          if (secretWordLetter === letter)
-            return secretWord.length - 1 === index
-              ? secretWordLetter
-              : secretWordLetter + " ";
-          else
-            return secretWord.length - 1 === index
-              ? guessWordLetter
-              : guessWordLetter + " ";
-        })
-        .join("");
+      const newGuessWord = replaceLetterOccurances(
+        secretWord,
+        guessWord,
+        letter
+      );
 
       // Update the guess word
       setGuessWord(newGuessWord);
