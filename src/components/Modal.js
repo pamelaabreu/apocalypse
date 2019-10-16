@@ -1,7 +1,7 @@
 import React from "react";
 
-const Modal = props => {
+const BootstrapModal = props => {
     return <h1>Hello I'm Modal</h1>
 };
 
-export default Modal;
+export default BootstrapModal;
