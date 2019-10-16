@@ -14,34 +14,7 @@ function App() {
   const [secretWord, setSecretWord] = useState("");
   const [guessWord, setGuessWord] = useState("_ _ _ _ _");
   const [numOfGuesses, setNumOfGuesses] = useState(6);
-  const [keyboardLetters, setKeyboardLetters] = useState({
-    a: { incorrectLetter: false },
-    b: { incorrectLetter: false },
-    c: { incorrectLetter: false },
-    d: { incorrectLetter: false },
-    e: { incorrectLetter: false },
-    f: { incorrectLetter: false },
-    g: { incorrectLetter: false },
-    h: { incorrectLetter: false },
-    i: { incorrectLetter: false },
-    j: { incorrectLetter: false },
-    k: { incorrectLetter: false },
-    l: { incorrectLetter: false },
-    m: { incorrectLetter: false },
-    n: { incorrectLetter: false },
-    o: { incorrectLetter: false },
-    p: { incorrectLetter: false },
-    q: { incorrectLetter: false },
-    r: { incorrectLetter: false },
-    s: { incorrectLetter: false },
-    t: { incorrectLetter: false },
-    u: { incorrectLetter: false },
-    v: { incorrectLetter: false },
-    w: { incorrectLetter: false },
-    x: { incorrectLetter: false },
-    y: { incorrectLetter: false },
-    z: { incorrectLetter: false }
-  });
+  const [keyboardLetters, setKeyboardLetters] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [userWon, setUserWon] = useState(false);
   // Extra feature ~ track cpu and user scores
@@ -52,6 +25,8 @@ function App() {
   useEffect(() => {
     // Set secretWord and guessWord
     getSecretWordAndGuessWord();
+    // Set keyboard letters
+    setKeyboardLetters(keyboardTemplate);
   }, []);
 
   const letterInputClick = e => {
