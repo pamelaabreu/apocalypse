@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+// Assets
+import keyboardTemplate from "./assets/keyboardTemplate";
+
 // Utils
 import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 
 // Components
 import Keyboard from "./components/Keyboard";
+import StartNewGameModal from "./components/Modal";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -38,6 +42,8 @@ function App() {
     y: { incorrectLetter: false },
     z: { incorrectLetter: false }
   });
+  const [modalShow, setModalShow] = useState(false);
+  const [userWon, setUserWon] = useState(false);
   // Extra feature ~ track cpu and user scores
   // const [cpuScore] = useState();
   // const [userScore] = useState();
@@ -45,16 +51,7 @@ function App() {
   // On Component Did Mount
   useEffect(() => {
     // Set secretWord and guessWord
-    const getRandomWordAndGuessWord = async () => {
-      const randomWord = await getRandomSecretWord();
-
-      const newGuessWord = await createGuessWord(randomWord);
-
-      setSecretWord(randomWord);
-      setGuessWord(newGuessWord);
-    };
-
-    getRandomWordAndGuessWord();
+    getSecretWordAndGuessWord();
   }, []);
 
   const letterInputClick = e => {
@@ -88,8 +85,9 @@ function App() {
 
       // Conditional to check if user won the game
       if (newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
-        console.log("Ya Win! Start New Game?");
-        // Start new game
+        // Start new game ~ show modal
+        setModalShow(true);
+        setUserWon(true);
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       }
     } else {
@@ -98,12 +96,9 @@ function App() {
 
       // Conditional to check if the user lost the game
       if (detractNumOfGuesses === 0) {
-        // Update number of guesses
-        setNumOfGuesses(detractNumOfGuesses);
-
-        console.log("Ya Lose! Start New Game?");
-
-        // Start new game
+        // Start new game - show modal
+        setModalShow(true);
+        setUserWon(false);
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       } else {
         // Create a copy of the keyboard letter object
@@ -121,6 +116,26 @@ function App() {
     }
   };
 
+  const getSecretWordAndGuessWord = async () => {
+    const randomWord = await getRandomSecretWord();
+
+    const newGuessWord = await createGuessWord(randomWord);
+
+    setSecretWord(randomWord);
+    setGuessWord(newGuessWord);
+  };
+
+  const resetGame = () => {
+    // Hide Modal
+    setModalShow(false);
+
+    // Reset state values for new game
+    setUserWon(false);
+    setNumOfGuesses(6);
+    setKeyboardLetters(keyboardTemplate);
+    getSecretWordAndGuessWord();
+  };
+
   return (
     <div
       style={{
@@ -131,6 +146,13 @@ function App() {
         marginRight: "25%"
       }}
     >
+      <StartNewGameModal
+        show={modalShow}
+        secretWord={secretWord}
+        userWon={userWon}
+        onHide={resetGame}
+      />
+
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
         <p>Scoreboard</p>
