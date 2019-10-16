@@ -5,6 +5,7 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 
 // Components
 import Keyboard from "./components/Keyboard";
+import Modal from "./components/Modal";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -131,6 +132,7 @@ function App() {
         marginRight: "25%"
       }}
     >
+      <Modal />
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
         <p>Scoreboard</p>
