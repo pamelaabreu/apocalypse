@@ -39,6 +39,7 @@ function App() {
     y: { incorrectLetter: false },
     z: { incorrectLetter: false }
   });
+  const [modalShow, setModalShow] = useState(false);
   // Extra feature ~ track cpu and user scores
   // const [cpuScore] = useState();
   // const [userScore] = useState();
@@ -90,7 +91,8 @@ function App() {
       // Conditional to check if user won the game
       if (newGuessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
         console.log("Ya Win! Start New Game?");
-        // Start new game
+        // Start new game ~ show modal
+        setModalShow(true);
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       }
     } else {
@@ -104,7 +106,8 @@ function App() {
 
         console.log("Ya Lose! Start New Game?");
 
-        // Start new game
+        // Start new game - show modal
+        setModalShow(true);
         // Reset state values ~ numOfGuesses, secretWord, keyboardLetters
       } else {
         // Create a copy of the keyboard letter object
@@ -132,7 +135,8 @@ function App() {
         marginRight: "25%"
       }}
     >
-      <Modal />
+      <Modal show={modalShow} onHide={() => setModalShow(false)} />
+
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
         <p>Scoreboard</p>
