@@ -48,16 +48,7 @@ function App() {
   // On Component Did Mount
   useEffect(() => {
     // Set secretWord and guessWord
-    const getRandomWordAndGuessWord = async () => {
-      const randomWord = await getRandomSecretWord();
-
-      const newGuessWord = await createGuessWord(randomWord);
-
-      setSecretWord(randomWord);
-      setGuessWord(newGuessWord);
-    };
-
-    getRandomWordAndGuessWord();
+    getSecretWordAndGuessWord();
   }, []);
 
   const letterInputClick = e => {
@@ -122,16 +113,24 @@ function App() {
     }
   };
 
+  const getSecretWordAndGuessWord = async () => {
+    const randomWord = await getRandomSecretWord();
+
+    const newGuessWord = await createGuessWord(randomWord);
+
+    setSecretWord(randomWord);
+    setGuessWord(newGuessWord);
+  };
+
   const resetGame = () => {
     // Hide Modal
     setModalShow(false);
 
-    // Reset values
+    // Reset state values for new game
     setUserWon(false);
     setNumOfGuesses(6);
     // keyboard
-    // secretWord
-    // guess word
+    getSecretWordAndGuessWord();
   };
 
   return (
