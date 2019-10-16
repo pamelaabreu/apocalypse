@@ -23,12 +23,72 @@ function App() {
 
   // On Component Did Mount
   useEffect(() => {
+    // Create a deep copy of keyboard object 
+    const copiedKeyboardTemplate = JSON.parse(JSON.stringify(keyboardTemplate));
+
     // Set secretWord and guessWord
     getSecretWordAndGuessWord();
     // Set keyboard letters
-    setKeyboardLetters(keyboardTemplate);
+    setKeyboardLetters(copiedKeyboardTemplate);
   }, []);
 
+  const getSecretWordAndGuessWord = async () => {
+    const randomWord = await getRandomSecretWord();
+
+    const newGuessWord = await createGuessWord(randomWord);
+
+    setSecretWord(randomWord);
+    setGuessWord(newGuessWord);
+  };
+
+  const letterInputClick = e => {
+    // Grab the inner text from the button clicked
+    const letter = e.target.innerText.toLowerCase();
+
+    // Update keyboard to have guessed letter
+    updateKeyboardWithGuessedLetter(letter);
+
+    // Check to see if user will win
+    willUserWin(letter);
+  };
+
+  const updateKeyboardWithGuessedLetter = letter => {
+    // Create a copy of the keyboard letter object
+    const copiedKeyboard = { ...keyboardLetters };
+
+    copiedKeyboard[letter].guessed = true;
+
+    // Update keyboard letters
+    setKeyboardLetters(copiedKeyboard);
+  };
+
+  const willUserWin = letter => {
+    // Conditional to check if secret word has the user's guessed letter
+    if (secretWord.toLowerCase().includes(letter)) {
+      // Replace the guess word with all the occurances of the guessed letter
+      const newGuessWord = replaceLetterOccurances(
+        secretWord,
+        guessWord,
+        letter
+      );
+
+      // Update the guess word
+      setGuessWord(newGuessWord);
+
+      // Create guess word without the spaces
+      const newGuessWordWithoutSpace = newGuessWord.split(" ").join("");
+
+      // Check if user won the game
+      userWonGame(newGuessWordWithoutSpace);
+    } else {
+      // Detract one guess from the number of guesses
+      const detractNumOfGuesses = numOfGuesses - 1;
+
+      // Check if user lost game
+      userLostGame(detractNumOfGuesses, letter);
+    }
+  };
+  
   const replaceLetterOccurances = (secretWord, guessWord, letter) => {
     // Split string
     const guessWordArray = guessWord.split(" ");
@@ -79,66 +139,17 @@ function App() {
     }
   };
 
-  const updateKeyboardWithGuessedLetter = letter => {
-    // Create a copy of the keyboard letter object
-    const copiedKeyboard = { ...keyboardLetters };
-
-    copiedKeyboard[letter].guessed = true;
-
-    // Update keyboard letters
-    setKeyboardLetters(copiedKeyboard);
-  };
-
-  const letterInputClick = e => {
-    // Grab the inner text from the button clicked
-    const letter = e.target.innerText.toLowerCase();
-
-    // Update keyboard to have guessed letter
-    updateKeyboardWithGuessedLetter(letter);
-
-    // Conditional to check if secret word has the user's guessed letter
-    if (secretWord.toLowerCase().includes(letter)) {
-      // Replace the guess word with all the occurances of the guessed letter
-      const newGuessWord = replaceLetterOccurances(
-        secretWord,
-        guessWord,
-        letter
-      );
-
-      // Update the guess word
-      setGuessWord(newGuessWord);
-
-      // Create guess word without the spaces
-      const newGuessWordWithoutSpace = newGuessWord.split(" ").join("");
-
-      // Check if user won the game
-      userWonGame(newGuessWordWithoutSpace);
-    } else {
-      // Detract one guess from the number of guesses
-      const detractNumOfGuesses = numOfGuesses - 1;
-
-      // Check if user lost game
-      userLostGame(detractNumOfGuesses, letter);
-    }
-  };
-
-  const getSecretWordAndGuessWord = async () => {
-    const randomWord = await getRandomSecretWord();
-
-    const newGuessWord = await createGuessWord(randomWord);
-
-    setSecretWord(randomWord);
-    setGuessWord(newGuessWord);
-  };
-
   const resetGame = () => {
+    // Create a deep copy of keyboard object 
+    const copiedKeyboardTemplate = JSON.parse(JSON.stringify(keyboardTemplate));
+
     // Hide Modal
     setModalShow(false);
-    console.log(keyboardTemplate);
+  
     // Reset state values for new game
     setUserWon(false);
     setNumOfGuesses(6);
-    setKeyboardLetters(keyboardTemplate);
+    setKeyboardLetters(copiedKeyboardTemplate);
     getSecretWordAndGuessWord();
   };
 
