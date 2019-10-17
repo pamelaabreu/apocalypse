@@ -1,6 +1,18 @@
+/* Removes any default padding or margin from all elements */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* App colors */
+:root {
+  --darkAqua: #6B7F82;
+  --grey: #8E9799;
+  --smokeGrey: #6F6C6C;
+  --smokeGreyBrown: #5B5750;
+  --maroon: #553739;
+  --bearBrown: #492C1D;
+  --smokeBrown: #232020;
 }
 
