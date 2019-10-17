@@ -5,6 +5,7 @@ import keyboardTemplate from "./assets/keyboardTemplate";
 
 // Utils
 import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
+import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 
 // Components
 import Keyboard from "./components/Keyboard";
