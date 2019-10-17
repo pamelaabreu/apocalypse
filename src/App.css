@@ -16,3 +16,11 @@
   --smokeBrown: #232020;
 }
 
+.greyColor {
+  color: var(--grey);
+}
+
+.whiteColor {
+  color: white;
+}
+
