@@ -1,8 +1,8 @@
 import React from "react";
 import Spinner from 'react-bootstrap/Spinner';
 
-const GuessWord = props => {
-    return <h1>Hello Guess Word</h1>
+const GuessWord = ({guessWord}) => {
+    return <p style={{ padding: "30px" }}>{guessWord}</p>
 };
 
 export default GuessWord;
