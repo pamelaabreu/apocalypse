@@ -120,17 +120,12 @@ function App() {
   const userWonGame = guessWordWithoutSpace => {
     // Conditional to check if user won the game
     if (guessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
-      // Avoid capturing a negative score
-      const newCpuScore = cpuScore === 0 ? 0 : 1;
-
-      // Set user/cpu scores
-      setCpuScore(cpuScore - newCpuScore);
-      setUserScore(userScore + 1);
+      // Update user/cpu points
+      updateScores(true);
 
       // Start new game ~ show modal
       setModalShow(true);
       setUserWon(true);
-      
     }
   };
 
@@ -144,6 +139,28 @@ function App() {
     } else {
       // Update number of guesses
       setNumOfGuesses(numGuesses);
+    }
+  };
+
+  const updateScores = status => {
+    // Conditional render to check if user won or lost
+    // Status returns true -> user won
+    // Status returns false -> user lost
+    
+    if (status) {
+      // Avoid capturing a negative score
+      const newCpuScore = cpuScore === 0 ? 0 : 1;
+
+      // Set user/cpu scores
+      setCpuScore(cpuScore - newCpuScore);
+      setUserScore(userScore + 1);
+    } else {
+      // Avoid capturing a negative score
+      const newUserScore = userScore === 0 ? 0 : 1;
+
+      // Set user/cpu scores
+      setCpuScore(cpuScore + 1);
+      setUserScore(userScore - newUserScore);
     }
   };
 
@@ -190,7 +207,7 @@ function App() {
         style={{ border: "1px solid rebeccapurple", margin: "100px 25% 0 25%" }}
       >
         <div style={{ textAlign: "center" }}>
-          <GuessWord guessWord={guessWord}/>
+          <GuessWord guessWord={guessWord} />
           <div
             style={{
               border: "1px solid blue",
