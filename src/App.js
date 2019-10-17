@@ -32,7 +32,18 @@ function App() {
     getSecretWordAndGuessWord();
     // Set keyboard letters
     setKeyboardLetters(copiedKeyboardTemplate);
+
+    // Set scores
+    const { userScore, cpuScore } = getScores();
+    setUserScore(userScore);
+    setCpuScore(cpuScore);
   }, []);
+
+  useEffect(() => {
+    if(cpuScore > 0 || userScore > 0){
+      addScores(userScore, cpuScore)
+    }
+  }, [cpuScore, userScore]);
 
   const getSecretWordAndGuessWord = async () => {
     const randomWord = await getRandomSecretWord();
@@ -153,19 +164,11 @@ function App() {
     // Status returns false -> user lost
 
     if (status) {
-      // Avoid capturing a negative score
-      const newCpuScore = cpuScore === 0 ? 0 : 1;
-
-      // Set user/cpu scores
-      setCpuScore(cpuScore - newCpuScore);
+      // Set user score
       setUserScore(userScore + 1);
     } else {
-      // Avoid capturing a negative score
-      const newUserScore = userScore === 0 ? 0 : 1;
-
-      // Set user/cpu scores
+      // Set cpu scores
       setCpuScore(cpuScore + 1);
-      setUserScore(userScore - newUserScore);
     }
   };
 
