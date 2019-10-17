@@ -1,13 +1,7 @@
-const addScores = (userScores = 0, cpuScores = 0) => {
-  const scores = JSON.parse(localStorage.getItem("scores")) || {
-    userScores,
-    cpuScores
-  };
+const addScores = (userScore, cpuScore) =>
+  localStorage.setItem("scores", JSON.stringify({ userScore, cpuScore }));
 
-  localStorage.setItem("scores", JSON.stringify(scores));
-};
+const getScores = () =>
+  JSON.parse(localStorage.getItem("scores")) || { userScore: 0, cpuScore: 0 };
 
-const getScores = (userScores = 0, cpuScores = 0) =>
-  JSON.parse(localStorage.getItem("scores")) || { userScores, cpuScores };
-
-export {addScores, getScores};
+export { addScores, getScores };
