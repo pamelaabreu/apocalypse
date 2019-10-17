@@ -5,11 +5,13 @@ import keyboardTemplate from "./assets/keyboardTemplate";
 
 // Utils
 import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
+import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 
 // Components
 import Keyboard from "./components/Keyboard";
 import StartNewGameModal from "./components/Modal";
 import GuessWord from "./components/GuessWord";
+import Scoreboard from "./components/Scoreboard";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -18,9 +20,8 @@ function App() {
   const [keyboardLetters, setKeyboardLetters] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [userWon, setUserWon] = useState(false);
-  // Extra feature ~ track cpu and user scores
-  // const [cpuScore] = useState();
-  // const [userScore] = useState();
+  const [cpuScore, setCpuScore] = useState(0);
+  const [userScore, setUserScore] = useState(0);
 
   // On Component Did Mount
   useEffect(() => {
@@ -31,7 +32,18 @@ function App() {
     getSecretWordAndGuessWord();
     // Set keyboard letters
     setKeyboardLetters(copiedKeyboardTemplate);
+
+    // Set scores
+    const { userScore, cpuScore } = getScores();
+    setUserScore(userScore);
+    setCpuScore(cpuScore);
   }, []);
+
+  useEffect(() => {
+    if(cpuScore > 0 || userScore > 0){
+      addScores(userScore, cpuScore)
+    }
+  }, [cpuScore, userScore]);
 
   const getSecretWordAndGuessWord = async () => {
     const randomWord = await getRandomSecretWord();
@@ -121,6 +133,9 @@ function App() {
   const userWonGame = guessWordWithoutSpace => {
     // Conditional to check if user won the game
     if (guessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
+      // Update user/cpu points
+      updateScores(true);
+
       // Start new game ~ show modal
       setModalShow(true);
       setUserWon(true);
@@ -130,6 +145,9 @@ function App() {
   const userLostGame = numGuesses => {
     // Conditional to check if the user lost the game
     if (numGuesses === 0) {
+      // Update user/cpu points
+      updateScores(false);
+
       // Start new game - show modal
       setModalShow(true);
       setUserWon(false);
@@ -137,6 +155,20 @@ function App() {
     } else {
       // Update number of guesses
       setNumOfGuesses(numGuesses);
+    }
+  };
+
+  const updateScores = status => {
+    // Conditional render to check if user won or lost
+    // Status returns true -> user won
+    // Status returns false -> user lost
+
+    if (status) {
+      // Set user score
+      setUserScore(userScore + 1);
+    } else {
+      // Set cpu scores
+      setCpuScore(cpuScore + 1);
     }
   };
 
@@ -169,11 +201,13 @@ function App() {
         secretWord={secretWord}
         userWon={userWon}
         onHide={resetGame}
+        cpuScore={cpuScore}
+        userScore={userScore}
       />
 
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
-        <p>Scoreboard</p>
+        <Scoreboard cpuScore={cpuScore} userScore={userScore} />
         <p>{numOfGuesses} Guesses</p>
       </div>
       <div style={{ border: "1px solid red", margin: "20px 25% 0 25%" }}>
@@ -183,7 +217,7 @@ function App() {
         style={{ border: "1px solid rebeccapurple", margin: "100px 25% 0 25%" }}
       >
         <div style={{ textAlign: "center" }}>
-          <GuessWord guessWord={guessWord}/>
+          <GuessWord guessWord={guessWord} />
           <div
             style={{
               border: "1px solid blue",
