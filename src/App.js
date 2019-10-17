@@ -132,6 +132,9 @@ function App() {
   const userLostGame = numGuesses => {
     // Conditional to check if the user lost the game
     if (numGuesses === 0) {
+      // Update user/cpu points
+      updateScores(false);
+
       // Start new game - show modal
       setModalShow(true);
       setUserWon(false);
@@ -146,7 +149,7 @@ function App() {
     // Conditional render to check if user won or lost
     // Status returns true -> user won
     // Status returns false -> user lost
-    
+
     if (status) {
       // Avoid capturing a negative score
       const newCpuScore = cpuScore === 0 ? 0 : 1;
