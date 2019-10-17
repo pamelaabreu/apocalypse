@@ -66,3 +66,7 @@
 .background-1 {
   background: linear-gradient(180deg, var(--bearBrown), var(--smokeBrown));
 }
+
+.background-0 {
+  background: var(--smokeBrown);
+}
