@@ -18,8 +18,8 @@ function App() {
   const [keyboardLetters, setKeyboardLetters] = useState({});
   const [modalShow, setModalShow] = useState(false);
   const [userWon, setUserWon] = useState(false);
-  const [cpuScore] = useState(0);
-  const [userScore] = useState(0);
+  const [cpuScore, setCpuScore] = useState(0);
+  const [userScore, setUserScore] = useState(0);
 
   // On Component Did Mount
   useEffect(() => {
