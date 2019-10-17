@@ -10,6 +10,7 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 import Keyboard from "./components/Keyboard";
 import StartNewGameModal from "./components/Modal";
 import GuessWord from "./components/GuessWord";
+import Scoreboard from "./components/Scoreboard";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -200,7 +201,7 @@ function App() {
 
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
-        <p>Scoreboard</p>
+        <Scoreboard cpuScore={cpuScore} userScore={userScore}/>
         <p>{numOfGuesses} Guesses</p>
       </div>
       <div style={{ border: "1px solid red", margin: "20px 25% 0 25%" }}>
