@@ -40,8 +40,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(cpuScore > 0 || userScore > 0){
-      addScores(userScore, cpuScore)
+    if (cpuScore > 0 || userScore > 0) {
+      addScores(userScore, cpuScore);
     }
   }, [cpuScore, userScore]);
 
@@ -188,6 +188,7 @@ function App() {
 
   return (
     <div
+      className={"background-" + numOfGuesses}
       style={{
         height: "90vh",
         border: "1px solid black",
