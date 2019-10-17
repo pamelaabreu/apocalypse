@@ -6,3 +6,8 @@ const addScores = (userScores = 0, cpuScores = 0) => {
 
   localStorage.setItem("scores", JSON.stringify(scores));
 };
+
+const getScores = (userScores = 0, cpuScores = 0) =>
+  JSON.parse(localStorage.getItem("scores")) || { userScores, cpuScores };
+
+export default {addScores, getScores};
