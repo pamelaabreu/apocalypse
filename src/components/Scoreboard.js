@@ -1,9 +1,9 @@
 import React from "react";
 
-const Scoreboard = props => {
+const Scoreboard = ({cpuScore, userScore}) => {
     return <div>
-        <p>User:</p>
-        <p>Secret Keeper:</p>
+        <p>User: {userScore}</p>
+        <p>Secret Keeper: {cpuScore}</p>
     </div>
 };
 
