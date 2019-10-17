@@ -10,4 +10,4 @@ const addScores = (userScores = 0, cpuScores = 0) => {
 const getScores = (userScores = 0, cpuScores = 0) =>
   JSON.parse(localStorage.getItem("scores")) || { userScores, cpuScores };
 
-export default {addScores, getScores};
+export {addScores, getScores};
