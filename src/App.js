@@ -197,11 +197,13 @@ function App() {
         secretWord={secretWord}
         userWon={userWon}
         onHide={resetGame}
+        cpuScore={cpuScore}
+        userScore={userScore}
       />
 
       <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
       <div style={{ margin: "20px 25% 0 25%" }}>
-        <Scoreboard cpuScore={cpuScore} userScore={userScore}/>
+        <Scoreboard cpuScore={cpuScore} userScore={userScore} />
         <p>{numOfGuesses} Guesses</p>
       </div>
       <div style={{ border: "1px solid red", margin: "20px 25% 0 25%" }}>
