@@ -7,12 +7,12 @@
 
 /* App colors */
 :root {
-  --darkAqua: #6B7F82;
-  --grey: #8E9799;
-  --smokeGrey: #6F6C6C;
-  --smokeGreyBrown: #5B5750;
+  --darkAqua: #6b7f82;
+  --grey: #8e9799;
+  --smokeGrey: #6f6c6c;
+  --smokeGreyBrown: #5b5750;
   --maroon: #553739;
-  --bearBrown: #492C1D;
+  --bearBrown: #492c1d;
   --smokeBrown: #232020;
 }
 
@@ -36,10 +36,33 @@
   border-top: 1px solid;
   border-color: inherit;
 
-  -webkit-transform:rotate(-5deg);
-  -moz-transform:rotate(-5deg);
-  -ms-transform:rotate(-5deg);
-  -o-transform:rotate(-5deg);
-  transform:rotate(-50deg);
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  -o-transform: rotate(-5deg);
+  transform: rotate(-50deg);
 }
 
+.background-6 {
+  background: var(--darkAqua);
+}
+
+.background-5 {
+  background: linear-gradient(180deg, var(--darkAqua), var(--smokeGrey));
+}
+
+.background-4 {
+  background: linear-gradient(180deg, var(--smokeGrey), var(--smokeGreyBrown));
+}
+
+.background-3 {
+  background: linear-gradient(180deg, var(--smokeGreyBrown), var(--maroon));
+}
+
+.background-2 {
+  background: linear-gradient(180deg, var(--maroon), var(--bearBrown));
+}
+
+.background-1 {
+  background: linear-gradient(180deg, var(--bearBrown), var(--smokeBrown));
+}
