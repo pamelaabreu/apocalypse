@@ -9,10 +9,11 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 // Components
 import Keyboard from "./components/Keyboard";
 import StartNewGameModal from "./components/Modal";
+import GuessWord from "./components/GuessWord";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
-  const [guessWord, setGuessWord] = useState("_ _ _ _ _");
+  const [guessWord, setGuessWord] = useState("");
   const [numOfGuesses, setNumOfGuesses] = useState(6);
   const [keyboardLetters, setKeyboardLetters] = useState({});
   const [modalShow, setModalShow] = useState(false);
@@ -182,7 +183,7 @@ function App() {
         style={{ border: "1px solid rebeccapurple", margin: "100px 25% 0 25%" }}
       >
         <div style={{ textAlign: "center" }}>
-          <p style={{ padding: "30px" }}>{guessWord}</p>
+          <GuessWord guessWord={guessWord}/>
           <div
             style={{
               border: "1px solid blue",
