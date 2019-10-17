@@ -120,9 +120,17 @@ function App() {
   const userWonGame = guessWordWithoutSpace => {
     // Conditional to check if user won the game
     if (guessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
+      // Avoid capturing a negative score
+      const newCpuScore = cpuScore === 0 ? 0 : 1;
+
+      // Set user/cpu scores
+      setCpuScore(cpuScore - newCpuScore);
+      setUserScore(userScore + 1);
+
       // Start new game ~ show modal
       setModalShow(true);
       setUserWon(true);
+      
     }
   };
 
