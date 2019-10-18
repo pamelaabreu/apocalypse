@@ -7,7 +7,7 @@ const GuessWord = ({ guessWord }) => {
       <span className="sr-only">Loading...</span>
     </Spinner>
   ) : (
-    <p className="whiteColor">{guessWord}</p>
+    <p className="whiteColor h4">{guessWord}</p>
   );
 };
 
