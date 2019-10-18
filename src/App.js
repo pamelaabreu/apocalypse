@@ -204,7 +204,7 @@ function App() {
         <div className="row">
           {/* <-- Number of Guesses --> */}
           <div className="col border border-light">
-            <p className="whiteColor">{numOfGuesses} Guesses</p>
+            <p className="whiteColor game-text">{numOfGuesses} Guesses</p>
           </div>
 
           {/* <-- Game Image --> */}

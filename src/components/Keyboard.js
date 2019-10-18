@@ -24,7 +24,7 @@ const Keyboard = ({
           background: "none"
         }}
       >
-        <p className="h4">{letter.toLowerCase()}</p>
+        <p className="game-text">{letter.toLowerCase()}</p>
       </button>
     );
   });
