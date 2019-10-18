@@ -71,13 +71,18 @@ function App() {
 
     copiedKeyboard[letter].guessed = true;
 
+    // Check if guessed letter is incorrect
+    if(checkLetterInWord(letter, secretWord)){
+
+    }
+
     // Update keyboard letters
     setKeyboardLetters(copiedKeyboard);
   };
 
   const willUserWin = letter => {
     // Conditional to check if secret word has the user's guessed letter
-    if (checkLetterInWord(letter, secretWord)) {
+    if (checkLetterInWord(letter)) {
       // Replace the guess word with all the occurances of the guessed letter
       const newGuessWord = replaceLetterOccurances(
         secretWord,
@@ -102,7 +107,7 @@ function App() {
     }
   };
 
-  const checkLetterInWord = (letter, word) => word.toLowerCase().includes(letter.toLowerCase());
+  const checkLetterInWord = letter => secretWord.toLowerCase().includes(letter.toLowerCase());
 
   const replaceLetterOccurances = (secretWord, guessWord, letter) => {
     // Split string
