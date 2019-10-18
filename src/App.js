@@ -77,7 +77,7 @@ function App() {
 
   const willUserWin = letter => {
     // Conditional to check if secret word has the user's guessed letter
-    if (secretWord.toLowerCase().includes(letter)) {
+    if (checkLetterInWord(letter, secretWord)) {
       // Replace the guess word with all the occurances of the guessed letter
       const newGuessWord = replaceLetterOccurances(
         secretWord,
@@ -101,6 +101,8 @@ function App() {
       userLostGame(detractNumOfGuesses, letter);
     }
   };
+
+  const checkLetterInWord = (letter, word) => word.toLowerCase().includes(letter.toLowerCase());
 
   const replaceLetterOccurances = (secretWord, guessWord, letter) => {
     // Split string
