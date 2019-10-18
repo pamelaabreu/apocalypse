@@ -14,17 +14,16 @@ const Keyboard = ({
         key={index}
         disabled={guessed}
         onClick={letterInputClick}
+        className="whiteColor m-2"
         style={{
-          margin: "5px",
-          padding: "5px",
-          border: "1px solid black",
-          borderRadius: "100%",
+          border: "none",
           height: "30px",
-          width: "30px",
-          textAlign: "center"
+          width:"30px",
+          textAlign: "center",
+          background: "none",
         }}
       >
-        <p>{letter.toLowerCase()}</p>
+        <p className="h4">{letter.toLowerCase()}</p>
       </button>
     );
   });
