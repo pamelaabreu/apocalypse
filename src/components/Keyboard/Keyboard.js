@@ -10,20 +10,14 @@ const Keyboard = ({
     // Grab the incorrectLetter value from keyboard letters object
     const { guessed, incorrect } = keyboardLetters[letter];
     const strikedStyle = incorrect ? " strikethrough " : "";
-    
+    const guessedStyle = guessed ? " keyboard-disabled-text " : "";
+
     return (
       <button
         key={index}
         disabled={guessed}
         onClick={letterInputClick}
-        className={"whiteColor m-2" + strikedStyle}
-        style={{
-          border: "none",
-          height: "30px",
-          width: "30px",
-          textAlign: "center",
-          background: "none"
-        }}
+        className={"keyboard-buttons whiteColor m-2" + strikedStyle + guessedStyle}
       >
         <p className="game-text">{letter.toLowerCase()}</p>
       </button>
