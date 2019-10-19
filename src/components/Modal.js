@@ -1,4 +1,7 @@
 import React from "react";
+import "./Modal.css";
+
+// Components
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Scoreboard from "./Scoreboard";
@@ -22,7 +25,7 @@ const StartNewGameModal = ({
       aria-labelledby="contained-modal-title-vcenter"
       show={show}
     >
-      <Modal.Body className="background-6 d-flex flex-column justify-content-center">
+      <Modal.Body className="d-flex flex-column justify-content-center">
         {/* <-- Win/Lose Message --> */}
         <div className="d-flex justify-content-center align-items-center">
           <h4 className="whiteColor game-text-lg m-5">{winLoseMessage}</h4>
