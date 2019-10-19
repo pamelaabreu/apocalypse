@@ -7,8 +7,8 @@ const Keyboard = ({
 }) => {
   return keyboardLettersKeys.map((letter, index) => {
     // Grab the incorrectLetter value from keyboard letters object
-    const { guessed } = keyboardLetters[letter];
-    const strikedStyle = guessed ? " strikethrough " : "";
+    const { guessed, incorrect } = keyboardLetters[letter];
+    const strikedStyle = incorrect ? " strikethrough " : "";
 
     return (
       <button
