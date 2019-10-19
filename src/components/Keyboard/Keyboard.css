@@ -7,7 +7,7 @@
 }
 
 .keyboard-disabled-text {
-  opacity: 0.9;
+  opacity: 0.3;
 }
 
 .strikethrough {
@@ -17,14 +17,14 @@
   position: absolute;
   content: "";
   left: 0;
-  top: 50%;
+  top: 80%;
   right: 0;
-  border-top: 1px solid;
-  border-color: inherit;
+  border-top: 3px solid;
+  border-color: black;
 
-  -webkit-transform: rotate(-5deg);
-  -moz-transform: rotate(-5deg);
-  -ms-transform: rotate(-5deg);
-  -o-transform: rotate(-5deg);
+  -webkit-transform: rotate(-50deg);
+  -moz-transform: rotate(-50deg);
+  -ms-transform: rotate(-50deg);
+  -o-transform: rotate(-50deg);
   transform: rotate(-50deg);
 }
