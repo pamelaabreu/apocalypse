@@ -9,7 +9,7 @@ import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 
 // Components
 import Keyboard from "./components/Keyboard/Keyboard";
-import StartNewGameModal from "./components/Modal";
+import StartNewGameModal from "./components/Modal/Modal";
 import GuessWord from "./components/GuessWord";
 import Scoreboard from "./components/Scoreboard";
 
