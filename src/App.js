@@ -8,8 +8,8 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 
 // Components
-import Keyboard from "./components/Keyboard";
-import StartNewGameModal from "./components/Modal";
+import Keyboard from "./components/Keyboard/Keyboard";
+import StartNewGameModal from "./components/Modal/Modal";
 import GuessWord from "./components/GuessWord";
 import Scoreboard from "./components/Scoreboard";
 
@@ -40,8 +40,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(cpuScore > 0 || userScore > 0){
-      addScores(userScore, cpuScore)
+    if (cpuScore > 0 || userScore > 0) {
+      addScores(userScore, cpuScore);
     }
   }, [cpuScore, userScore]);
 
@@ -196,15 +196,8 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        height: "90vh",
-        border: "1px solid black",
-        marginTop: "10px",
-        marginLeft: "25%",
-        marginRight: "25%"
-      }}
-    >
+    <main className={"vh-100 background-" + numOfGuesses}>
+      {/* <-- If user wins/lose this modal will pop up --> */}
       <StartNewGameModal
         show={modalShow}
         secretWord={secretWord}
@@ -214,44 +207,55 @@ function App() {
         userScore={userScore}
       />
 
-      <h1 style={{ margin: "20px 25% 0 25%" }}>Apocalypse</h1>
-      <div style={{ margin: "20px 25% 0 25%" }}>
-        <Scoreboard cpuScore={cpuScore} userScore={userScore} />
-        <p>{numOfGuesses} Guesses</p>
-      </div>
-      <div style={{ border: "1px solid red", margin: "20px 25% 0 25%" }}>
-        <p>game image rendering goes here</p>
-      </div>
-      <div
-        style={{ border: "1px solid rebeccapurple", margin: "100px 25% 0 25%" }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <GuessWord guessWord={guessWord} />
-          <div
-            style={{
-              border: "1px solid blue",
-              margin: "0 10% 40px 10%",
-              padding: "10px"
-            }}
-          >
-            <p>keyboard</p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center"
-              }}
-            >
-              <Keyboard
-                keyboardLetters={keyboardLetters}
-                letterInputClick={letterInputClick}
-                keyboardLettersKeys={Object.keys(keyboardLetters)}
-              />
-            </div>
+      {/* <-- App Game --> */}
+      <div className="container-fluid border border-warning">
+        {/* <-- First Row: Number of Guesses, Game Image, Scoreboard --> */}
+        <div className="row">
+          {/* <-- Number of Guesses --> */}
+          <div className="col border border-light">
+            <p className="whiteColor game-text">{numOfGuesses} Guesses</p>
+          </div>
+
+          {/* <-- Game Image --> */}
+          <div className="col-6 col-xs-2 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center border border-light">
+            <div className="moon"></div>
+          </div>
+
+          {/* <-- Scoreboard --> */}
+          <div className="col border border-light">
+            <Scoreboard cpuScore={cpuScore} userScore={userScore} />
           </div>
         </div>
+
+        {/* <-- Second Row: Guess word --> */}
+        <div className="row align-items-center border border-light">
+          <div className="col" />
+
+          {/* <-- Guess word --> */}
+          <div className="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center border border-light">
+            <GuessWord guessWord={guessWord} />
+          </div>
+
+          <div className="col" />
+        </div>
+
+        {/* <-- Third Row: Keyboard --> */}
+        <div className="row border border-light align-items-center">
+          <div className="col" />
+
+          {/* <-- Keyboard --> */}
+          <div className="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center flex-wrap">
+            <Keyboard
+              keyboardLetters={keyboardLetters}
+              letterInputClick={letterInputClick}
+              keyboardLettersKeys={Object.keys(keyboardLetters)}
+            />
+          </div>
+
+          <div className="col" />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 

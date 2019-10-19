@@ -1,24 +1,74 @@
+/* Removes any default padding or margin from all elements */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.App {
-  text-align: center;
+/* App colors */
+:root {
+  --darkAqua: #6b7f82;
+  --grey: #8e9799;
+  --smokeGrey: #6f6c6c;
+  --smokeGreyBrown: #5b5750;
+  --maroon: #553739;
+  --bearBrown: #492c1d;
+  --smokeBrown: #232020;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.greyColor {
+  color: var(--grey);
+}
+
+.whiteColor {
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.background-6 {
+  background: var(--darkAqua);
+}
+
+.background-5 {
+  background: linear-gradient(180deg, var(--darkAqua) 0%, var(--smokeGrey) 40%);
+  background-size: 400% 400%;
+}
+
+.background-4 {
+  background: linear-gradient(180deg, var(--smokeGrey) 0%, var(--smokeGreyBrown) 40%);
+  background-size: 400% 400%;
+}
+
+.background-3 {
+  background: linear-gradient(180deg, var(--smokeGreyBrown) 0%, var(--maroon) 40%);
+  background-size: 400% 400%;
+}
+
+.background-2 {
+  background: linear-gradient(180deg, var(--maroon) 0%, var(--bearBrown) 40%);
+  background-size: 400% 400%;
+}
+
+.background-1 {
+  background: linear-gradient(180deg, var(--bearBrown) 0%, var(--smokeBrown) 40%);
+  background-size: 400% 400%;
+}
+
+.background-0 {
+  background: var(--smokeBrown);
+  background-size: 400% 400%;
+}
+
+.moon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 15px 15px 0 0 white;
+}
+
+.game-text {
+  font-size: 30px;
+}
+
+.game-text-lg {
+  font-size: 40px;
 }

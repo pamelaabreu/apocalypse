@@ -3,11 +3,11 @@ import Spinner from "react-bootstrap/Spinner";
 
 const GuessWord = ({ guessWord }) => {
   return guessWord.length === 0 ? (
-    <Spinner animation="border" role="status">
+    <Spinner animation="border" role="status" variant="light">
       <span className="sr-only">Loading...</span>
     </Spinner>
   ) : (
-    <p style={{ padding: "30px" }}>{guessWord}</p>
+    <p className="whiteColor game-text">{guessWord}</p>
   );
 };
 

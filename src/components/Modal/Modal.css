@@ -1,0 +1,18 @@
+.lose-background {
+  background-color: var(--darkAqua);
+  background: linear-gradient(180deg, var(--darkAqua), #6b7f82b5), url("../../assets/images/rain-background.gif");
+  /* background: linear-gradient(180deg, var(--darkAqua), #6b7f82b5), url("https://media.giphy.com/media/d1G6qsjTJcHYhzxu/giphy.gif"); */
+}
+
+.win-background {
+background: linear-gradient(180deg, var(--bearBrown), #492c1d91),
+    url("../../assets/images/sparkle-background.gif");
+    
+}
+
+.lose-background,
+.win-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

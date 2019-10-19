@@ -1,0 +1,30 @@
+.keyboard-buttons {
+  border: none;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  background: none;
+}
+
+.keyboard-disabled-text {
+  opacity: 0.3;
+}
+
+.strikethrough {
+  position: relative;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 80%;
+  right: 0;
+  border-top: 3px solid;
+  border-color: black;
+
+  -webkit-transform: rotate(-50deg);
+  -moz-transform: rotate(-50deg);
+  -ms-transform: rotate(-50deg);
+  -o-transform: rotate(-50deg);
+  transform: rotate(-50deg);
+}
