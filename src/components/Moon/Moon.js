@@ -1,7 +1,7 @@
 import React from "react";
 import "./Moon.css";
 
-const Moon = props => {
+const Moon = ({numOfGuesses}) => {
     return <div className="moon"></div>
 };
 
