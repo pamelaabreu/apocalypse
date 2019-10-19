@@ -1,4 +1,5 @@
 import React from "react";
+import "./Keyboard.css";
 
 const Keyboard = ({
   keyboardLetters,
@@ -9,7 +10,7 @@ const Keyboard = ({
     // Grab the incorrectLetter value from keyboard letters object
     const { guessed, incorrect } = keyboardLetters[letter];
     const strikedStyle = incorrect ? " strikethrough " : "";
-
+    
     return (
       <button
         key={index}
