@@ -17,6 +17,7 @@ const StartNewGameModal = ({
   const winLoseMessage = userWon
     ? "Ya Win!"
     : `Ya Lose! The correct word was ${secretWord}.`;
+  const winLoseBackground = userWon ? " win-background " : " lose-background ";
   return (
     <Modal
       centered
@@ -25,7 +26,7 @@ const StartNewGameModal = ({
       aria-labelledby="contained-modal-title-vcenter"
       show={show}
     >
-      <Modal.Body className="d-flex flex-column justify-content-center">
+      <Modal.Body className={"d-flex flex-column justify-content-center" + winLoseBackground}>
         {/* <-- Win/Lose Message --> */}
         <div className="d-flex justify-content-center align-items-center">
           <h4 className="whiteColor game-text-lg m-5">{winLoseMessage}</h4>
