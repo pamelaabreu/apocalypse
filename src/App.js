@@ -8,7 +8,7 @@ import { getRandomSecretWord, createGuessWord } from "./utils/wordUtils";
 import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 
 // Components
-import Keyboard from "./components/Keyboard";
+import Keyboard from "./components/Keyboard/Keyboard";
 import StartNewGameModal from "./components/Modal";
 import GuessWord from "./components/GuessWord";
 import Scoreboard from "./components/Scoreboard";
