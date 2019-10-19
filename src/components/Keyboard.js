@@ -7,7 +7,8 @@ const Keyboard = ({
 }) => {
   return keyboardLettersKeys.map((letter, index) => {
     // Grab the incorrectLetter value from keyboard letters object
-    const { guessed } = keyboardLetters[letter];
+    const { guessed, incorrect } = keyboardLetters[letter];
+    const incorrectStyle = incorrect ? "red" : "black";
 
     return (
       <button
@@ -21,7 +22,8 @@ const Keyboard = ({
           borderRadius: "100%",
           height: "30px",
           width: "30px",
-          textAlign: "center"
+          textAlign: "center",
+          color: incorrectStyle
         }}
       >
         <p>{letter.toLowerCase()}</p>
