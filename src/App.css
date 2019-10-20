@@ -78,50 +78,8 @@
   font-size: 40px;
 }
 
-.app {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas:
-    "numGuesses gameRender gameRender scoreboard"
-    "numGuesses gameRender gameRender scoreboard"
-    ". guessWord guessWord ."
-    ". keyboard keyboard .";
-}
-
-.numGuesses {
-  grid-area: numGuesses;
-  justify-self: start;
-  align-self: start;
-  z-index: 1;
-}
-
-.gameRender {
-  grid-area: gameRender;
-  justify-self: center;
-  align-self: center;
-}
-.scoreboard {
-  grid-area: scoreboard;
-  justify-self: end;
-  align-self: start;
-  display: grid;
-  grid-column-gap: 20px;
-  grid-template-columns: 1fr 2px 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-areas:
-    "userScoreTitle scoreboardBorder cpuScoreTitle"
-    "userScore scoreboardBorder cpuScore";
-}
-
-.guessWord {
-  grid-area: guessWord;
-  justify-self: center;
-  align-self: center;
-}
-
-.keyboard {
-  grid-area: keyboard;
-  justify-self: center;
-  align-self: start;
+@media only screen and (max-width: 576px) {
+  .game-text {
+    font-size: 25px;
+  }
 }
