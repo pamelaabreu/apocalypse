@@ -1,0 +1,25 @@
+.moon {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.moon-6 {
+  box-shadow: -300px 0px 0 0 white;
+}
+
+.moon-5 {
+  box-shadow: -215px 0px 0 0 white;
+}
+.moon-4 {
+  box-shadow: -165px 0px 0 0 white;
+}
+.moon-3 {
+  box-shadow: -115px 0px 0 0 white;
+}
+.moon-2 {
+  box-shadow: -65px 0px 0 0 white;
+}
+.moon-1 {
+  box-shadow: -15px 0px 0 0 white;
+}

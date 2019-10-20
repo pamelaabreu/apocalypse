@@ -12,6 +12,7 @@ import Keyboard from "./components/Keyboard/Keyboard";
 import StartNewGameModal from "./components/Modal/Modal";
 import GuessWord from "./components/GuessWord";
 import Scoreboard from "./components/Scoreboard";
+import Moon from "./components/Moon/Moon";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -218,7 +219,7 @@ function App() {
 
           {/* <-- Game Image --> */}
           <div className="col-6 col-xs-2 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center border border-light">
-            <div className="moon"></div>
+            <Moon numOfGuesses={numOfGuesses}/>
           </div>
 
           {/* <-- Scoreboard --> */}
