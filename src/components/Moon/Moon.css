@@ -7,7 +7,6 @@
 .moon-6 {
   box-shadow: -300px 0px 0 0 white;
 }
-
 .moon-5 {
   box-shadow: -215px 0px 0 0 white;
 }
@@ -22,4 +21,32 @@
 }
 .moon-1 {
   box-shadow: -15px 0px 0 0 white;
+}
+
+@media only screen and (max-width: 576px) {
+  .moon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .moon-6 {
+    box-shadow: -100px 0px 0 0 white;
+  }
+  
+  .moon-5 {
+    box-shadow: -80px 0px 0 0 white;
+  }
+  .moon-4 {
+    box-shadow: -60px 0px 0 0 white;
+  }
+  .moon-3 {
+    box-shadow: -40px 0px 0 0 white;
+  }
+  .moon-2 {
+    box-shadow: -20px 0px 0 0 white;
+  }
+  .moon-1 {
+    box-shadow: -10px 0px 0 0 white;
+  }
 }
