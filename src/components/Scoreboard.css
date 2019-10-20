@@ -1,0 +1,38 @@
+.scoreboardGrid {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr 2px 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "userScoreTitle scoreboardBorder cpuScoreTitle"
+    "userScore scoreboardBorder cpuScore";
+}
+
+.scoreboardBorder {
+  grid-area: scoreboardBorder;
+  background: white;
+}
+
+.userScoreTitle {
+  grid-area: userScoreTitle;
+}
+
+.userScore {
+  grid-area: userScore;
+}
+
+.cpuScoreTitle {
+  grid-area: cpuScoreTitle;
+}
+
+.cpuScore {
+  grid-area: cpuScore;
+}
+
+.userScoreTitle,
+.userScore,
+.cpuScoreTitle,
+.cpuScore {
+  justify-self: center;
+  align-self: center;
+}
