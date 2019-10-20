@@ -4,7 +4,7 @@ import "./Modal.css";
 // Components
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Scoreboard from "../Scoreboard";
+import Scoreboard from "../Scoreboard/Scoreboard";
 
 const StartNewGameModal = ({
   show,
