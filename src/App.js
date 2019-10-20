@@ -246,7 +246,7 @@ function App() {
         </div>
 
         {/* <-- Fourth Row: Keyboard --> */}
-        <div className="row align-items-center">
+        <div className="row align-items-center mb-5">
           <div className="col" />
 
           {/* <-- Keyboard --> */}
