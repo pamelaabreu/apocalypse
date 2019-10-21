@@ -191,8 +191,44 @@
   }
 }
 
+/* Positioning for header */
+.headerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+  "scoreboard-header . num-guesses-header";
+}
+
+.scoreboard-header {
+  grid-area: scoreboard-header;
+  justify-self: start;
+  align-self: start;
+}
+
+.num-guesses-header {
+  grid-area: num-guesses-header;
+  justify-self: end;
+  align-self: start;
+}
+
 @media only screen and (max-width: 576px) {
   .game-text {
     font-size: 25px;
+  }
+
+  .headerGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr .5fr;
+    grid-template-areas: 
+    ". scoreboard-header ."
+    ". num-guesses-header .";
+    grid-row-gap: 10px;
+  }
+
+  .scoreboard-header, .num-guesses-header {
+    justify-self: center;
+    align-self: start;
   }
 }
