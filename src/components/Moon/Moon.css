@@ -4,25 +4,69 @@
   border-radius: 50%;
 }
 
+/* Moving moon */
 .moon-6 {
   box-shadow: -300px 0px 0 0 white;
 }
 .moon-5 {
   box-shadow: -215px 0px 0 0 white;
+  animation: moon6ToMoon5 ease-out 3s forwards;
 }
 .moon-4 {
   box-shadow: -165px 0px 0 0 white;
+  animation: moon5ToMoon4 ease-out 3s forwards;
 }
 .moon-3 {
   box-shadow: -115px 0px 0 0 white;
+  animation: moon4ToMoon3 ease-out 3s forwards;
 }
 .moon-2 {
   box-shadow: -65px 0px 0 0 white;
+  animation: moon3ToMoon2 ease-out 3s forwards;
 }
 .moon-1 {
   box-shadow: -15px 0px 0 0 white;
+  animation: moon2ToMoon1 ease-out 3s forwards;
 }
 
+/* Animation for each moon transition */
+@keyframes moon6ToMoon5 {
+  from {
+    box-shadow: -300px 0px 0 0 white;
+  } to {
+    box-shadow: -215px 0px 0 0 white;
+  }
+}
+@keyframes moon5ToMoon4 {
+  from {
+    box-shadow: -215px 0px 0 0 white;
+  } to {
+    box-shadow: -165px 0px 0 0 white;
+  }
+}
+@keyframes moon4ToMoon3 {
+  from {
+    box-shadow: -165px 0px 0 0 white;
+  } to {
+    box-shadow: -115px 0px 0 0 white;
+  }
+}
+@keyframes moon3ToMoon2 {
+  from {
+    box-shadow: -115px 0px 0 0 white;
+  } to {
+    box-shadow: -65px 0px 0 0 white;
+  }
+}
+@keyframes moon2ToMoon1 {
+  from {
+    box-shadow: -65px 0px 0 0 white;
+  } to {
+    box-shadow: -15px 0px 0 0 white;
+  }
+}
+
+/* Media query for screens smaller than 576px */
 @media only screen and (max-width: 576px) {
   .moon {
     width: 100px;
@@ -30,23 +74,65 @@
     border-radius: 50%;
   }
 
+  /* Moving moons */
   .moon-6 {
     box-shadow: -100px 0px 0 0 white;
   }
-  
   .moon-5 {
     box-shadow: -80px 0px 0 0 white;
+    animation: moon6ToMoon5 ease-out 3s forwards;
   }
   .moon-4 {
     box-shadow: -60px 0px 0 0 white;
+    animation: moon5ToMoon4 ease-out 3s forwards;
   }
   .moon-3 {
     box-shadow: -40px 0px 0 0 white;
+    animation: moon4ToMoon3 ease-out 3s forwards;
   }
   .moon-2 {
     box-shadow: -20px 0px 0 0 white;
+    animation: moon3ToMoon2 ease-out 3s forwards;
   }
   .moon-1 {
     box-shadow: -10px 0px 0 0 white;
+    animation: moon2ToMoon1 ease-out 3s forwards;
+  }
+
+  /* Animation for each moon transition */
+  @keyframes moon6ToMoon5 {
+    from {
+      box-shadow: -100px 0px 0 0 white;
+    } to {
+      box-shadow: -80px 0px 0 0 white;
+    }
+  }
+  @keyframes moon5ToMoon4 {
+    from {
+      box-shadow: -80px 0px 0 0 white;
+    } to {
+      box-shadow: -60px 0px 0 0 white;
+    }
+  }
+  @keyframes moon4ToMoon3 {
+    from {
+      box-shadow: -60px 0px 0 0 white;
+    } to {
+      box-shadow: -40px 0px 0 0 white;
+    }
+  }
+  @keyframes moon3ToMoon2 {
+    from {
+      box-shadow: -40px 0px 0 0 white;
+    } to {
+      box-shadow: -20px 0px 0 0 white;
+    }
+  }
+  @keyframes moon2ToMoon1 {
+    from {
+      box-shadow: -20px 0px 0 0 white;
+    } to {
+      box-shadow: -10px 0px 0 0 white;
+    }
   }
 }
