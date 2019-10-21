@@ -212,17 +212,15 @@ function App() {
       {/* <-- App Game --> */}
       <div className="container-fluid">
         {/* <-- First Row: Number of Guesses and Scoreboard --> */}
-        <div className="row mb-5">
+        <div className="headerGrid mb-3">
           {/* <-- Scoreboard --> */}
-          <div className="col">
+          <div className="scoreboard-header">
             <Scoreboard cpuScore={cpuScore} userScore={userScore} />
           </div>
 
-          <div className="col-6 " />
-
           {/* <-- Number of Guesses --> */}
-          <div className="col d-flex justify-content-end">
-            <p className="whiteColor game-text">{numOfGuesses} Guesses</p>
+          <div className="num-guesses-header">
+            <p className="whiteColor game-text">{numOfGuesses} {numOfGuesses === 1 ? "Guess" : "Guesses"}</p>
           </div>
         </div>
 
