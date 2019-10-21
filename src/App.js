@@ -198,7 +198,7 @@ function App() {
   };
 
   return (
-    <main className={"min-vh-100 p-5 background-" + numOfGuesses}>
+    <main className={"min-vh-100 p-3 background-" + numOfGuesses}>
       {/* <-- If user wins/lose this modal will pop up --> */}
       <StartNewGameModal
         show={modalShow}
