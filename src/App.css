@@ -1,3 +1,6 @@
+/* Imported Google Font */
+@import url('https://fonts.googleapis.com/css?family=Jomolhari&display=swap');
+
 /* Removes any default padding or margin from all elements */
 * {
   box-sizing: border-box;
@@ -14,8 +17,18 @@
   --maroon: #553739;
   --bearBrown: #492c1d;
   --smokeBrown: #232020;
+  /* 
+  Alternative Grey Shades
+  --lightGrey: #888F99;
+  --lightMediumGrey: #70767E;
+  --grey: #4B4E54;
+  --mediumGrey: #3E4146;
+  --darkGrey: #323438;
+  --smokeBrown: #232020; 
+  */
 }
 
+/* Text Colors */
 .greyColor {
   color: var(--grey);
 }
@@ -24,6 +37,18 @@
   color: white;
 }
 
+/* Text Sizes */
+.game-text {
+  font-family: 'Jomolhari', serif;
+  font-size: 30px;
+}
+
+.game-text-lg {
+  font-family: 'Jomolhari', serif;
+  font-size: 40px;
+}
+
+/* Backgrounds */
 .background-6 {
   background: var(--darkAqua);
 }
@@ -74,20 +99,7 @@
   background: var(--smokeBrown);
 }
 
-.game-text {
-  font-size: 30px;
-}
-
-.game-text-lg {
-  font-size: 40px;
-}
-
-@media only screen and (max-width: 576px) {
-  .game-text {
-    font-size: 25px;
-  }
-}
-
+/* Animation backgrounds */
 @keyframes gradientBG5 {
   /* 0% {
     background-position: 0% 0%;
@@ -176,5 +188,11 @@
   }
   to {
     background: var(--smokeBrown);
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .game-text {
+    font-size: 25px;
   }
 }
