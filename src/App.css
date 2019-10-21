@@ -1,3 +1,6 @@
+/* Imported Google Font */
+@import url('https://fonts.googleapis.com/css?family=Jomolhari&display=swap');
+
 /* Removes any default padding or margin from all elements */
 * {
   box-sizing: border-box;
@@ -14,8 +17,18 @@
   --maroon: #553739;
   --bearBrown: #492c1d;
   --smokeBrown: #232020;
+  /* 
+  Alternative Grey Shades
+  --lightGrey: #888F99;
+  --lightMediumGrey: #70767E;
+  --grey: #4B4E54;
+  --mediumGrey: #3E4146;
+  --darkGrey: #323438;
+  --smokeBrown: #232020; 
+  */
 }
 
+/* Text Colors */
 .greyColor {
   color: var(--grey);
 }
@@ -24,44 +37,198 @@
   color: white;
 }
 
+/* Text Sizes */
+.game-text {
+  font-family: 'Jomolhari', serif;
+  font-size: 30px;
+}
+
+.game-text-lg {
+  font-family: 'Jomolhari', serif;
+  font-size: 40px;
+}
+
+/* Backgrounds */
 .background-6 {
   background: var(--darkAqua);
 }
 
 .background-5 {
-  background: linear-gradient(180deg, var(--darkAqua) 0%, var(--smokeGrey) 40%);
+  /* background: linear-gradient(180deg, var(--darkAqua) 0%, var(--smokeGrey) 100%); */
   background-size: 400% 400%;
+  animation: gradientBG5 ease 2s forwards;
 }
 
 .background-4 {
-  background: linear-gradient(180deg, var(--smokeGrey) 0%, var(--smokeGreyBrown) 40%);
+  /* background: linear-gradient(
+    180deg,
+    var(--smokeGrey) 0%,
+    var(--smokeGreyBrown) 100%
+    ); */
   background-size: 400% 400%;
+  animation: gradientBG4 ease 2s forwards;
 }
 
 .background-3 {
-  background: linear-gradient(180deg, var(--smokeGreyBrown) 0%, var(--maroon) 40%);
+  /* background: linear-gradient(
+    180deg,
+    var(--smokeGreyBrown) 0%,
+    var(--maroon) 100%
+  ); */
   background-size: 400% 400%;
+  animation: gradientBG3 ease 2s forwards;
 }
 
 .background-2 {
-  background: linear-gradient(180deg, var(--maroon) 0%, var(--bearBrown) 40%);
+  /* background: linear-gradient(180deg, var(--maroon) 0%, var(--bearBrown) 100%); */
   background-size: 400% 400%;
+  animation: gradientBG2 ease 2s forwards;
 }
 
 .background-1 {
-  background: linear-gradient(180deg, var(--bearBrown) 0%, var(--smokeBrown) 40%);
+  /* background: linear-gradient(
+    180deg,
+    var(--bearBrown) 75%,
+    var(--smokeBrown) 100%
+  ); */
   background-size: 400% 400%;
+  animation: gradientBG1 ease 2s forwards;
 }
 
 .background-0 {
   background: var(--smokeBrown);
-  background-size: 400% 400%;
 }
 
-.game-text {
-  font-size: 30px;
+/* Animation backgrounds */
+@keyframes gradientBG5 {
+  /* 0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  } */
+
+  from {
+    background: var(--darkAqua);
+  }
+  to {
+    background: var(--smokeGrey);
+  }
 }
 
-.game-text-lg {
-  font-size: 40px;
+@keyframes gradientBG4 {
+  /* 0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  } */
+  from {
+    background: var(--smokeGrey);
+  }
+  to {
+    background: var(--smokeGreyBrown);
+  }
+}
+
+@keyframes gradientBG3 {
+  /* 0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  } */
+  from {
+    background: var(--smokeGreyBrown);
+  }
+  to {
+    background: var(--maroon);
+  }
+}
+
+@keyframes gradientBG2 {
+  /* 0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  } */
+  from {
+    background: var(--maroon);
+  }
+  to {
+    background: var(--bearBrown);
+  }
+}
+
+@keyframes gradientBG1 {
+  /* 0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  } */
+  from {
+    background: var(--bearBrown);
+  }
+  to {
+    background: var(--smokeBrown);
+  }
+}
+
+/* Positioning for header */
+.headerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+  "scoreboard-header . num-guesses-header";
+}
+
+.scoreboard-header {
+  grid-area: scoreboard-header;
+  justify-self: start;
+  align-self: start;
+}
+
+.num-guesses-header {
+  grid-area: num-guesses-header;
+  justify-self: end;
+  align-self: start;
+}
+
+@media only screen and (max-width: 576px) {
+  .game-text {
+    font-size: 25px;
+  }
+
+  .headerGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr .5fr;
+    grid-template-areas: 
+    ". scoreboard-header ."
+    ". num-guesses-header .";
+    grid-row-gap: 10px;
+  }
+
+  .scoreboard-header, .num-guesses-header {
+    justify-self: center;
+    align-self: start;
+  }
 }

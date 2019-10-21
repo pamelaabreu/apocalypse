@@ -11,7 +11,7 @@ import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 import Keyboard from "./components/Keyboard/Keyboard";
 import StartNewGameModal from "./components/Modal/Modal";
 import GuessWord from "./components/GuessWord";
-import Scoreboard from "./components/Scoreboard";
+import Scoreboard from "./components/Scoreboard/Scoreboard";
 import Moon from "./components/Moon/Moon";
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
     copiedKeyboard[letter].guessed = true;
 
     // Also check if guessed letter is incorrect
-    if(!checkLetterInWord(letter, secretWord)){
+    if (!checkLetterInWord(letter, secretWord)) {
       // Update the incorrect key value
       copiedKeyboard[letter].incorrect = true;
     }
@@ -110,7 +110,8 @@ function App() {
     }
   };
 
-  const checkLetterInWord = (letter, word) => word.toLowerCase().includes(letter.toLowerCase());
+  const checkLetterInWord = (letter, word) =>
+    word.toLowerCase().includes(letter.toLowerCase());
 
   const replaceLetterOccurances = (secretWord, guessWord, letter) => {
     // Split string
@@ -197,7 +198,7 @@ function App() {
   };
 
   return (
-    <main className={"vh-100 background-" + numOfGuesses}>
+    <main className={"min-vh-100 p-3 background-" + numOfGuesses}>
       {/* <-- If user wins/lose this modal will pop up --> */}
       <StartNewGameModal
         show={modalShow}
@@ -209,43 +210,45 @@ function App() {
       />
 
       {/* <-- App Game --> */}
-      <div className="container-fluid border border-warning">
-        {/* <-- First Row: Number of Guesses, Game Image, Scoreboard --> */}
-        <div className="row">
-          {/* <-- Number of Guesses --> */}
-          <div className="col border border-light">
-            <p className="whiteColor game-text">{numOfGuesses} Guesses</p>
-          </div>
-
-          {/* <-- Game Image --> */}
-          <div className="col-6 col-xs-2 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center border border-light">
-            <Moon numOfGuesses={numOfGuesses}/>
-          </div>
-
+      <div className="container-fluid">
+        {/* <-- First Row: Number of Guesses and Scoreboard --> */}
+        <div className="headerGrid mb-3">
           {/* <-- Scoreboard --> */}
-          <div className="col border border-light">
+          <div className="scoreboard-header">
             <Scoreboard cpuScore={cpuScore} userScore={userScore} />
+          </div>
+
+          {/* <-- Number of Guesses --> */}
+          <div className="num-guesses-header">
+            <p className="whiteColor game-text">{numOfGuesses} {numOfGuesses === 1 ? "Guess" : "Guesses"}</p>
           </div>
         </div>
 
-        {/* <-- Second Row: Guess word --> */}
-        <div className="row align-items-center border border-light">
+        {/* <-- Second Row: Game Image --> */}
+        <div className="row mb-5">
+          <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+            <Moon numOfGuesses={numOfGuesses} />
+          </div>
+        </div>
+
+        {/* <-- Third Row: Guess word --> */}
+        <div className="row align-items-center">
           <div className="col" />
 
           {/* <-- Guess word --> */}
-          <div className="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center border border-light">
+          <div className="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center">
             <GuessWord guessWord={guessWord} />
           </div>
 
           <div className="col" />
         </div>
 
-        {/* <-- Third Row: Keyboard --> */}
-        <div className="row border border-light align-items-center">
+        {/* <-- Fourth Row: Keyboard --> */}
+        <div className="row align-items-center mb-5">
           <div className="col" />
 
           {/* <-- Keyboard --> */}
-          <div className="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center flex-wrap">
+          <div className="col-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center flex-wrap">
             <Keyboard
               keyboardLetters={keyboardLetters}
               letterInputClick={letterInputClick}

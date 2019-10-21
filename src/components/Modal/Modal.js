@@ -4,7 +4,7 @@ import "./Modal.css";
 // Components
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import Scoreboard from "../Scoreboard";
+import Scoreboard from "../Scoreboard/Scoreboard";
 
 const StartNewGameModal = ({
   show,
@@ -44,8 +44,8 @@ const StartNewGameModal = ({
 
         {/* <-- Start New Game --> */}
         <div className="d-flex justify-content-center align-items-center m-5">
-          <Button variant="outline-light" onClick={onHide}>
-            Start New Game?
+          <Button variant="outline-light" className="game-text" type="submit" value="Start New Game?" onClick={onHide}>
+            <span >Start New Game?</span>
           </Button>
         </div>
       </Modal.Body>
