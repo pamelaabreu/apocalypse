@@ -15,8 +15,8 @@ const StartNewGameModal = ({
   userScore
 }) => {
   const winLoseMessage = userWon
-    ? "Ya Win!"
-    : `Ya Lose! The correct word was ${secretWord}.`;
+    ? "Ya Win! 🎉😁🙌"
+    : `Ya Lose! The correct word was ${secretWord} 😅`;
   const winLoseBackground = userWon ? " win-background " : " lose-background ";
 
   return (
