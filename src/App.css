@@ -195,9 +195,10 @@
 .headerGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr .5fr;
   grid-template-areas: 
-  "scoreboard-header . num-guesses-header";
+  "scoreboard-header . num-guesses-header"
+  ". . num-guesses-message-header";
 }
 
 .scoreboard-header {
@@ -212,6 +213,13 @@
   align-self: start;
 }
 
+.num-guesses-message-header {
+  grid-area: num-guesses-message-header;
+  justify-self: end;
+  align-self: start;
+  text-align: end;
+}
+
 @media only screen and (max-width: 576px) {
   .game-text {
     font-size: 25px;
@@ -219,16 +227,21 @@
 
   .headerGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr .5fr;
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: 1fr .5fr .5fr;
     grid-template-areas: 
     ". scoreboard-header ."
-    ". num-guesses-header .";
+    ". num-guesses-header ."
+    ". num-guesses-message-header .";
     grid-row-gap: 10px;
   }
 
-  .scoreboard-header, .num-guesses-header {
+  .scoreboard-header, .num-guesses-header, .num-guesses-message-header {
     justify-self: center;
-    align-self: start;
+    align-self: start; 
+  }
+
+  .num-guesses-message-header {
+    text-align: center;
   }
 }
