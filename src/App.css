@@ -1,5 +1,5 @@
 /* Imported Google Font */
-@import url('https://fonts.googleapis.com/css?family=Jomolhari&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Jomolhari&display=swap");
 
 /* Removes any default padding or margin from all elements */
 * {
@@ -39,12 +39,12 @@
 
 /* Text Sizes */
 .game-text {
-  font-family: 'Jomolhari', serif;
+  font-family: "Jomolhari", serif;
   font-size: 30px;
 }
 
 .game-text-lg {
-  font-family: 'Jomolhari', serif;
+  font-family: "Jomolhari", serif;
   font-size: 40px;
 }
 
@@ -195,10 +195,10 @@
 .headerGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr .5fr;
-  grid-template-areas: 
-  "scoreboard-header . num-guesses-header"
-  ". . num-guesses-message-header";
+  grid-template-rows: 1fr 0.5fr;
+  grid-template-areas:
+    "scoreboard-header . num-guesses-header"
+    ". . num-guesses-message-header";
 }
 
 .scoreboard-header {
@@ -227,18 +227,20 @@
 
   .headerGrid {
     display: grid;
-    grid-template-columns: .1fr 1fr .1fr;
-    grid-template-rows: 1fr .5fr .5fr;
-    grid-template-areas: 
-    ". scoreboard-header ."
-    ". num-guesses-header ."
-    ". num-guesses-message-header .";
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 1fr 0.5fr 0.5fr;
+    grid-template-areas:
+      ". scoreboard-header ."
+      ". num-guesses-header ."
+      ". num-guesses-message-header .";
     grid-row-gap: 10px;
   }
 
-  .scoreboard-header, .num-guesses-header, .num-guesses-message-header {
+  .scoreboard-header,
+  .num-guesses-header,
+  .num-guesses-message-header {
     justify-self: center;
-    align-self: start; 
+    align-self: start;
   }
 
   .num-guesses-message-header {
