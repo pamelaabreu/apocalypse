@@ -12,7 +12,7 @@ A React "Hangman" inspired game app that generates words to guess. Can you win a
 It's a [Create React App](https://github.com/facebook/create-react-app) so you can run it in the usual way:
 1. `npm install` // install node dependencies
 2. `npm start` // run the development server
-3. Navigate to localhost:3000 on web browser
+3. Navigate to [http://localhost:3000](http://localhost:3000) view it in the browser
 
 ## Deployment ⛓
 [Apocalypse Guessing Word Game](https://apocalypsegame.netlify.com/) was deployed through [Netlify](https://www.netlify.com/)
@@ -29,14 +29,6 @@ It's a [Create React App](https://github.com/facebook/create-react-app) so you c
 #### Available Scripts
 
 In the project directory, you can run:
-`npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
 `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
@@ -49,8 +41,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 `npm run eject`
 
