@@ -10,10 +10,10 @@ import { getScores, addScores } from "./utils/scoreboardLocalStorage";
 // Components
 import Keyboard from "./components/Keyboard/Keyboard";
 import StartNewGameModal from "./components/Modal/Modal";
-import GuessWord from "./components/GuessWord";
+import GuessWord from "./components/GuessWord/GuessWord";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 import Moon from "./components/Moon/Moon";
-import NumGuessMessage from "./components/NumGuessMessage";
+import NumGuessMessage from "./components/NumGuessMessages/NumGuessMessage";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
