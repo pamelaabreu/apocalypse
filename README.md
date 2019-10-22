@@ -12,32 +12,11 @@ A React "Hangman" inspired game app that generates words to guess. Can you win a
 It's a [Create React App](https://github.com/facebook/create-react-app) so you can run it in the usual way:
 1. `npm install` // install node dependencies
 2. `npm start` // run the development server
-<<<<<<< HEAD
 3. Navigate to [http://localhost:3000](http://localhost:3000) view it in the browser
 
 ## Deployment ⛓
 [Apocalypse Guessing Word Game](https://apocalypsegame.netlify.com/) was deployed through [Netlify](https://www.netlify.com/)
 - Docs: [Deploying to Netlify](https://docs.netlify.com/site-deploys/create-deploys/#drag-and-drop)
-=======
-3. Navigate to localhost:3000 on web browser
-
-## Deployment ⛓
-[Apocalypse Guessing Word Game](https://apocalypsegame.netlify.com/) was deployed through [Netlify](https://www.netlify.com/)
-- Docs: [Deploying to Netlify](https://docs.netlify.com/site-deploys/create-deploys/#drag-and-drop)
-
-## Built With 🛠
-|Libraries||||
-|:--|:---:|:---:|---:|
-|**axios**| [GitHub](https://github.com/axios/axios)| [npm](https://www.npmjs.com/package/axios)| |
-|**bootstrap**| [GitHub](https://github.com/twbs/bootstrap) | [npm](https://www.npmjs.com/package/bootstrap) | [Web](https://getbootstrap.com/)|
-|**react-bootstrap**| [Github](https://github.com/react-bootstrap/react-bootstrap) | [npm](https://www.npmjs.com/package/react-bootstrap) | [Web docs](https://react-bootstrap.github.io/)|
-
-## Extra:
-#### Available Scripts
-
-In the project directory, you can run:
-`npm start`
->>>>>>> master
 
 ## Built With 🛠
 |Libraries||||
@@ -95,6 +74,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ma
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### `npm run build` fails to minify
+#### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
