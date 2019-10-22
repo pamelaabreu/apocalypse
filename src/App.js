@@ -13,6 +13,7 @@ import StartNewGameModal from "./components/Modal/Modal";
 import GuessWord from "./components/GuessWord";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 import Moon from "./components/Moon/Moon";
+import NumGuessMessage from "./components/NumGuessMessage";
 
 function App() {
   const [secretWord, setSecretWord] = useState("");
@@ -211,7 +212,7 @@ function App() {
 
       {/* <-- App Game --> */}
       <div className="container-fluid">
-        {/* <-- First Row: Number of Guesses and Scoreboard --> */}
+        {/* <-- First Row: Scoreboard, Number of Guesses, and Guess Level Message --> */}
         <div className="headerGrid mb-3">
           {/* <-- Scoreboard --> */}
           <div className="scoreboard-header">
@@ -220,7 +221,14 @@ function App() {
 
           {/* <-- Number of Guesses --> */}
           <div className="num-guesses-header">
-            <p className="whiteColor game-text">{numOfGuesses} {numOfGuesses === 1 ? "Guess" : "Guesses"}</p>
+            <p className="whiteColor game-text">
+              {numOfGuesses} {numOfGuesses === 1 ? "Guess" : "Guesses"}
+            </p>
+          </div>
+
+          {/* <-- Guess Level Message --> */}
+          <div className="num-guesses-message-header">
+            <NumGuessMessage numOfGuesses={numOfGuesses} />
           </div>
         </div>
 
@@ -232,15 +240,11 @@ function App() {
         </div>
 
         {/* <-- Third Row: Guess word --> */}
-        <div className="row align-items-center">
-          <div className="col" />
-
+        <div className="row">
           {/* <-- Guess word --> */}
-          <div className="col-6 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center">
+          <div className="col-12 d-flex justify-content-center align-items-center">
             <GuessWord guessWord={guessWord} />
           </div>
-
-          <div className="col" />
         </div>
 
         {/* <-- Fourth Row: Keyboard --> */}
