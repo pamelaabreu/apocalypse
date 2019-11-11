@@ -48,11 +48,11 @@ function App() {
     }
   }, [cpuScore, userScore]);
 
-  // Set state values for the secret word and guess word  
+  // Set state values for the secret word and guess word
   const getSecretWordAndGuessWord = async () => {
     const randomWord = await getRandomSecretWord();
 
-    const newGuessWord = await createGuessWord(randomWord);
+    const newGuessWord = createGuessWord(randomWord);
 
     setSecretWord(randomWord);
     setGuessWord(newGuessWord);
@@ -220,8 +220,6 @@ function App() {
         cpuScore={cpuScore}
         userScore={userScore}
       />
-
-      {/* <-- App Game --> */}
       <div className="container-fluid">
         {/* <-- First Row: Scoreboard, Number of Guesses, and Guess Level Message --> */}
         <div className="headerGrid mb-3">

@@ -2,11 +2,11 @@
 import { getWordList } from "./wordDictAPI";
 
 // Create Word List
-const createWordList = async () =>
-  await getWordList().then(data => {
-    // Split word string into array of words
-    return data.split("\n");
-  });
+const createWordList = async () => {
+  const wordList = await getWordList();
+
+  return wordList.split("\n");
+};
 
 // Randomly choose number
 const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));

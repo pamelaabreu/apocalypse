@@ -9,9 +9,9 @@ const baseUrl = "app.linkedin-reach.io/words";
 
 const getWordList = async () => {
   try {
-    return await axios
-      .get(`${corsAnywhereUrl}/${baseUrl}`)
-      .then(res => res.data);
+    const response = await axios.get(`${corsAnywhereUrl}/${baseUrl}`);
+
+    return response.data;
   } catch (error) {
     return false;
   }
