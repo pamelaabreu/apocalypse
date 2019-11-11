@@ -41,21 +41,24 @@ function App() {
     setCpuScore(cpuScore);
   }, []);
 
+  // Save user/cpu scores to Local Storage
   useEffect(() => {
     if (cpuScore > 0 || userScore > 0) {
       addScores(userScore, cpuScore);
     }
   }, [cpuScore, userScore]);
 
+  // Set state values for the secret word and guess word
   const getSecretWordAndGuessWord = async () => {
     const randomWord = await getRandomSecretWord();
 
-    const newGuessWord = await createGuessWord(randomWord);
+    const newGuessWord = createGuessWord(randomWord);
 
     setSecretWord(randomWord);
     setGuessWord(newGuessWord);
   };
 
+  // When user clicks on a letter
   const letterInputClick = e => {
     // Grab the inner text from the button clicked
     const letter = e.target.innerText.toLowerCase();
@@ -67,6 +70,7 @@ function App() {
     willUserWin(letter);
   };
 
+  // Set state to the keyboard object when a letter is guessed
   const updateKeyboardWithGuessedLetter = letter => {
     // Create a copy of the keyboard letter object
     const copiedKeyboard = { ...keyboardLetters };
@@ -84,6 +88,7 @@ function App() {
     setKeyboardLetters(copiedKeyboard);
   };
 
+  // Check if the user will win
   const willUserWin = letter => {
     // Conditional to check if secret word has the user's guessed letter
     if (checkLetterInWord(letter, secretWord)) {
@@ -111,9 +116,11 @@ function App() {
     }
   };
 
+  // Determine if a letter is found inside of the word
   const checkLetterInWord = (letter, word) =>
     word.toLowerCase().includes(letter.toLowerCase());
 
+  // Update the guess word with the guessed letter occurance
   const replaceLetterOccurances = (secretWord, guessWord, letter) => {
     // Split string
     const guessWordArray = guessWord.split(" ");
@@ -142,6 +149,7 @@ function App() {
     return newGuessWord;
   };
 
+  // Functionality for when user wins game
   const userWonGame = guessWordWithoutSpace => {
     // Conditional to check if user won the game
     if (guessWordWithoutSpace.toLowerCase() === secretWord.toLowerCase()) {
@@ -154,6 +162,7 @@ function App() {
     }
   };
 
+  // Functionality for when user loses game
   const userLostGame = numGuesses => {
     // Conditional to check if the user lost the game
     if (numGuesses === 0) {
@@ -170,6 +179,7 @@ function App() {
     }
   };
 
+  // Functionality to update the scoreboard for the user/cpu
   const updateScores = status => {
     // Conditional render to check if user won or lost
     // Status returns true -> user won
@@ -184,6 +194,7 @@ function App() {
     }
   };
 
+  // Functionality to start new game
   const resetGame = () => {
     // Create a deep copy of keyboard object
     const copiedKeyboardTemplate = JSON.parse(JSON.stringify(keyboardTemplate));
@@ -209,8 +220,6 @@ function App() {
         cpuScore={cpuScore}
         userScore={userScore}
       />
-
-      {/* <-- App Game --> */}
       <div className="container-fluid">
         {/* <-- First Row: Scoreboard, Number of Guesses, and Guess Level Message --> */}
         <div className="headerGrid mb-3">
